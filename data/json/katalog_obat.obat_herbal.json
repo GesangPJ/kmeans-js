@@ -1,0 +1,120 @@
+[{
+  "_id": {
+    "$oid": "6514d3968532449a3e1f858b"
+  },
+  "namaObat": "Temulawak",
+  "komposisi": "Kurkumin, Xanthorrhizol, Alkaloid, Minyak Atsiri, Triterpenoid",
+  "kegunaanUtama": "Antiinflamasi, Pelindung Hati, Penyembuhan Luka, Obat Penyakit Lambung, Detoksifikasi",
+  "deskripsi": "Temulawak dapat digunakan dalam berbagai bentuk, termasuk sebagai ramuan tradisional, suplemen, atau minuman herbal. Cara pemakaian dapat berbeda-beda tergantung pada tujuan penggunaannya. Temulawak bisa dibuat dalam bentuk minuman herbal dengan cara merebus potongan-potongan akarnya bersama dengan bahan lain seperti jahe atau kunyit. Minuman ini bisa diminum secara rutin. emulawak juga tersedia dalam bentuk suplemen kapsul atau tablet. Pemakaian suplemen harus sesuai dengan petunjuk dosis yang tertera pada kemasan. \nMeskipun Temulawak memiliki banyak manfaat, penggunaannya juga bisa menimbulkan beberapa efek samping, terutama jika dikonsumsi dalam jumlah berlebihan. Beberapa efek samping yang mungkin muncul adalah:\n1). Gangguan Lambung: Konsumsi berlebihan Temulawak dapat menyebabkan gangguan lambung, seperti mual, muntah, atau diare.\n2). Alergi: Beberapa individu mungkin mengalami reaksi alergi terhadap Temulawak, yang dapat mengakibatkan gatal-gatal, ruam kulit, atau pembengkakan.\n3). Interaksi Obat: Temulawak dapat berinteraksi dengan beberapa jenis obat, khususnya obat-obat yang mempengaruhi pembekuan darah. Sebaiknya konsultasikan dengan profesional kesehatan sebelum mengonsumsi Temulawak jika Anda sedang dalam pengobatan dengan obat-obat tertentu.",
+  "latin": "Curcuma xanthorrhiza"
+},
+{
+  "_id": {
+    "$oid": "6514d64a53163d926803bf6a"
+  },
+  "namaObat": "Kunyit",
+  "komposisi": "Kurkumin, Ketone α-turmeron, Seskuiterpenoid",
+  "kegunaanUtama": "antiinflamasi, antioksidan,  perlindungan terhadap radikal bebas, peningkatan sistem kekebalan tubuh,  dukungan dalam pengobatan osteoarthritis",
+  "deskripsi": "Kunyit juga dikenal dengan sebutan kunyit putih atau kunyit India. Tumbuhan ini dikenal karena akarnya yang digunakan sebagai bumbu rempah-rempah yang populer dalam masakan Asia Selatan dan Tenggara, serta memiliki berbagai manfaat kesehatan. Manfaat kunyit termasuk sifat antiinflamasi, antioksidan, dan potensi untuk membantu dalam berbagai masalah kesehatan, termasuk perlindungan terhadap radikal bebas, peningkatan sistem kekebalan tubuh, dan dukungan dalam pengobatan beberapa kondisi seperti osteoarthritis.\nKunyit sering digunakan dalam berbagai hidangan, minuman, dan obat-obatan tradisional, seperti jamu kunyit. Namun, untuk penggunaan kunyit dalam pengobatan atau suplemen, penting untuk berkonsultasi dengan profesional kesehatan dan mematuhi dosis yang tepat, karena dosis yang tinggi bisa berdampak negatif pada kesehatan.",
+  "latin": "Curcuma longa"
+},
+{
+  "_id": {
+    "$oid": "6514d90c53163d926803bf6b"
+  },
+  "namaObat": "Sambiloto",
+  "komposisi": "Andrografolida, Andrografin, Diterpenoid",
+  "kegunaanUtama": "Antiinflamasi, Meningkatkan sistem kekebalan tubuh, Antivirus, Mengurangi Gejala PMS",
+  "deskripsi": "Sambiloto dapat digunakan dalam berbagai bentuk, seperti teh herba, kapsul, ekstrak cair, atau tincture. Cara pemakaian tergantung pada tujuan penggunaannya dan produk yang digunakan. Dosis yang tepat dan cara penggunaan sebaiknya sesuai dengan rekomendasi dokter atau ahli pengobatan herbal. \nMeskipun Sambiloto memiliki manfaat kesehatan yang signifikan, penggunaannya juga bisa menimbulkan efek samping. Beberapa efek samping yang mungkin muncul termasuk pusing, gangguan pencernaan, dan reaksi alergi. Selalu konsultasikan dengan profesional kesehatan sebelum menggunakan Sambiloto, terutama jika Anda memiliki kondisi medis tertentu atau sedang dalam pengobatan dengan obat-obatan lainnya.",
+  "latin": "Andrographis paniculata"
+},
+{
+  "_id": {
+    "$oid": "6514e5ec53163d926803bf6c"
+  },
+  "namaObat": "Belimbing Wuluh",
+  "komposisi": "Asam, Vitamin C, Serat, Fitokimia, Mineral",
+  "kegunaanUtama": "mengatasi sariawan, mencegah hipertensi, mengatasi jerawat, mengatasi panu, mengobati diabetes, mengatasi sikat gigi, mengobati batuk, melegakan nafas dan mencairkan dahak",
+  "deskripsi": "Buah belimbing wuluh sering digunakan dalam berbagai hidangan, terutama dalam masakan Indonesia, seperti sambal, acar, dan sup. Selain itu, buah ini juga bisa digunakan dalam minuman segar atau sebagai bahan bumbu masakan untuk memberikan rasa asam yang khas. Manfaat kesehatan belimbing wuluh termasuk kemampuannya untuk menambah rasa pada hidangan, mendukung pencernaan, dan memberikan asupan vitamin C.",
+  "latin": "Averrhoa bilimbi"
+},
+{
+  "_id": {
+    "$oid": "6514e68b53163d926803bf6d"
+  },
+  "namaObat": "Kangkung",
+  "komposisi": "Serat, vitamin A, vitamin C, vitamin K, vitamin B kompleks, Lemak, Kalori, Kolin, Antioksidan, Asam Amino",
+  "kegunaanUtama": "Mencegah sariawan, gusi yang berdarah, mengobati kesulitan tidur",
+  "deskripsi": "Kangkung dikenal karena daunnya yang berair dan renyah. Ini adalah sumber yang baik untuk berbagai nutrisi penting. Kangkung sering dimasak dengan berbagai cara, seperti tumis kangkung, sup, lalap, atau digunakan dalam hidangan mie atau nasi goreng. Ini adalah bahan makanan yang populer dalam berbagai hidangan Asia, terutama di Indonesia, dan juga bisa digunakan dalam hidangan internasional. Kangkung adalah sumber nutrisi penting dan merupakan pilihan makanan yang sehat dalam diet seimbang.",
+  "latin": "Ipomoea aquatica"
+},
+{
+  "_id": {
+    "$oid": "6514e74053163d926803bf6e"
+  },
+  "namaObat": "Daun Kelor",
+  "komposisi": "vitamin A, vitamin C, vitamin E, dan vitamin K, Antioksidan, Serat, Protein, Asam Lemak Sehat, kalsium, magnesium, fosfor, zat besi",
+  "kegunaanUtama": "meningkatkan metabolisme tubuh, peningkatan kesehatan jantung, penurunan gula darah, peningkatan kesehatan kulit",
+  "deskripsi": "Manfaat daun kelor termasuk peningkatan kesehatan jantung, penurunan gula darah, peningkatan kesehatan kulit, dan dukungan sistem kekebalan tubuh. Daun kelor dapat dikonsumsi segar atau dalam bentuk suplemen. Namun, sebelum memasukkan daun kelor dalam diet Anda, penting untuk berkonsultasi dengan profesional kesehatan untuk memastikan bahwa itu cocok dengan kondisi kesehatan Anda dan dosis yang tepat.",
+  "latin": "Moringa oleifera"
+},
+{
+  "_id": {
+    "$oid": "6514e7e153163d926803bf6f"
+  },
+  "namaObat": "Bayam",
+  "komposisi": "Serat, vitamin A, vitamin C, vitamin K, vitamin B kompleks, vitamin E, Antioksidan, kalsium, magnesium, besi, fosfor, kalium",
+  "kegunaanUtama": "melancarkan pengeluaran ASI, pengobatan gusi yang bengkak, kesehatan tulang, sistem kekebalan tubuh, kesehatan mata, ",
+  "deskripsi": "Bayam sering digunakan dalam berbagai hidangan, seperti salad, sup, tumis, smoothie, dan berbagai hidangan lainnya. Karena kandungan nutrisinya yang kaya, bayam duri dianggap sebagai makanan yang sangat sehat dan dapat memberikan berbagai manfaat kesehatan, termasuk dukungan untuk kesehatan tulang, sistem kekebalan tubuh, dan kesehatan mata. Itu juga sangat cocok untuk diet rendah kalori dan untuk mereka yang mencari pilihan makanan yang rendah lemak.",
+  "latin": "spinach"
+},
+{
+  "_id": {
+    "$oid": "6514e8ed53163d926803bf70"
+  },
+  "namaObat": "Pepaya",
+  "komposisi": "vitamin C, Beta-karoten, vitamin E, dan vitamin K, Serat, Enzim Papain, Antioksidan, kalium, magnesium, dan fosfor",
+  "kegunaanUtama": "memperlancar pencernaan, menurunkan demam, disentri, obat malaria, keputihan",
+  "deskripsi": "Pepaya sering dimakan segar, dijadikan jus, atau digunakan dalam berbagai hidangan dan makanan penutup. Manfaat kesehatan pepaya termasuk peningkatan sistem kekebalan tubuh, pencernaan yang sehat, dukungan kesehatan mata, dan kulit yang sehat. Pepaya adalah salah satu buah yang sangat sehat dan dapat menjadi bagian yang baik dalam diet seimbang Anda.",
+  "latin": "Carica papaya"
+},
+{
+  "_id": {
+    "$oid": "6514e9ba53163d926803bf71"
+  },
+  "namaObat": "Jintan Hitam",
+  "komposisi": "Serat, protein, Minyak Astiri, Asam lemak, Antioksidan ",
+  "kegunaanUtama": "memperkuat sistem kekebalan tubuh, meningkatkan fungsi otak, mengatasi gangguan tidur, obat antialergi dan antihistamin.",
+  "deskripsi": "Jintan hitam, juga dikenal dengan nama habatussauda, adalah tumbuhan yang menghasilkan biji hitam kecil yang memiliki rasa pedas dan pahit. Biji jintan hitam telah digunakan dalam pengobatan tradisional di berbagai budaya selama ribuan tahun dan dianggap memiliki berbagai manfaat kesehatan. Manfaat kesehatan yang dikaitkan dengan biji jintan hitam termasuk potensi anti inflamasi, kemampuan memperkuat sistem kekebalan tubuh, dan potensi manfaat untuk kesehatan jantung dan kesehatan otak. Namun, sebelum menggunakan biji jintan hitam untuk tujuan pengobatan atau suplemen, penting untuk berkonsultasi dengan profesional kesehatan. Sebagai catatan, ada beberapa efek samping yang terkait dengan penggunaan biji jintan hitam, terutama jika digunakan dalam dosis tinggi, sehingga harus digunakan dengan hati-hati dan sesuai dengan petunjuk.",
+  "latin": "Nigella Sativa"
+},
+{
+  "_id": {
+    "$oid": "6514eb8353163d926803bf72"
+  },
+  "namaObat": "Kemuning",
+  "komposisi": "alkaloid, minyak atsiri, Flavonoid, vitamin C, vitamin A, kalsium, zat besi, Asam Amino, Kumarin",
+  "kegunaanUtama": "mengobati diare, sakit gigi, datang haid tidak teratur, radang buah zakar, infeksi saluran kencing, disentri",
+  "deskripsi": "Kemuning sering dikenal sebagai tanaman hias yang indah karena memiliki daun yang hijau mengkilap, serta bunga yang harum dan cantik. Tanaman ini juga memiliki beberapa kegunaan dalam pengobatan tradisional dan penggunaan lainnya. Kemuning memiliki nilai estetika dan sejumlah potensi manfaat kesehatan, terutama dalam pengobatan tradisional. \nUntuk mengobati saluran kencing, pertama siapkan daun kemuning segar sekitar 35 gram dicuci bersih lalu tambahkan 3 gelas air. Rebus sampai tersisa air setengahnya. Setelah dingin, daunnya disaring dan bisa diminum 3 kali dalam sehari.\nNamun, penting untuk diingat bahwa penggunaan tanaman ini dalam pengobatan atau untuk tujuan kesehatan harus dilakukan dengan pengetahuan yang tepat dan di bawah pengawasan profesional yang kompeten. Selalu berkonsultasi dengan ahli tumbuhan atau profesional kesehatan sebelum menggunakan tanaman ini untuk tujuan tertentu.",
+  "latin": "Murraya paniculata"
+},
+{
+  "_id": {
+    "$oid": "6514ec4f53163d926803bf73"
+  },
+  "namaObat": "Wortel",
+  "komposisi": "Vitamin A, Vitamin K1, Vitamin C, Zat Besi, Karotenoid, Serat, Kalium, Folat",
+  "kegunaanUtama": "Kesehatan mata, kulit yang sehat, sistem kekebalan tubuh yang kuat, dan pencernaan yang sehat, cacing kremi, eksim dan kejang jantung",
+  "deskripsi": "Wortel (Daucus carota) adalah sayuran yang sangat populer dan kaya nutrisi. Sayuran ini sering dikonsumsi dalam berbagai bentuk, baik mentah sebagai camilan atau dalam hidangan seperti sup, tumis, atau salad. Wortel adalah sayuran yang rendah kalori dan rendah lemak, menjadikannya pilihan sehat dalam diet. Manfaat kesehatan wortel termasuk dukungan untuk kesehatan mata, kulit yang sehat, sistem kekebalan tubuh yang kuat, dan pencernaan yang sehat. Wortel sering diberikan kepada anak-anak sebagai camilan sehat dan dapat digunakan dalam berbagai hidangan untuk menambah rasa dan manfaat gizi.",
+  "latin": "Daucus carota"
+},
+{
+  "_id": {
+    "$oid": "6514ecc353163d926803bf74"
+  },
+  "namaObat": "Bunga Wijayakusuma",
+  "komposisi": "minyak atsiri",
+  "kegunaanUtama": "mengobati luka",
+  "deskripsi": "Bunga ini juga sering dikenal dengan beberapa nama umum lain, seperti bunga kantan, bunga kecombrang, bunga honje, atau torch ginger flower dalam bahasa Inggris. Wijayakusuma adalah tanaman yang berasal dari daerah tropis Asia Tenggara dan sering digunakan dalam berbagai masakan dan pengobatan tradisional. Bunga wijayakusuma memiliki nilai estetika dan beberapa potensi manfaat kesehatan. Dalam pengobatan tradisional, minyak atsiri yang diekstrak dari bunga wijayakusuma digunakan untuk berbagai tujuan. Namun, seperti halnya penggunaan tumbuhan untuk tujuan medis, penggunaan biji wijayakusuma atau minyak atsiri sebaiknya diawasi oleh ahli herbal atau profesional kesehatan yang kompeten.",
+  "latin": "Etlingera elatior"
+}]

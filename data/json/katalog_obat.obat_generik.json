@@ -1,0 +1,340 @@
+[{
+  "_id": {
+    "$oid": "651261460baa91bd522b079b"
+  },
+  "namaObat": "Parasetamol",
+  "komposisi": "paracetamol",
+  "kegunaanUtama": "Mengurangi demam, nyeri",
+  "deskripsi": "Parasetamol adalah obat yang digunakan untuk mengurangi nyeri dan menurunkan demam. Obat ini tidak termasuk dalam kelompok NSAID dan biasanya memiliki sedikit efek samping jika digunakan dengan benar. Penting untuk mengikuti dosis yang dianjurkan dan menghindari overdosis, karena ini dapat berbahaya bagi hati.",
+  "formula": "C8H9NO2"
+},
+{
+  "_id": {
+    "$oid": "65126a5454abee1755415a43"
+  },
+  "namaObat": "Asam Mefenamat",
+  "komposisi": "Mefenamic Acid",
+  "kegunaanUtama": "Mengurangi nyeri haid, nyeri gigi, randang, demam",
+  "deskripsi": "Mefenamic acid adalah senyawa organik yang termasuk dalam kelas NSAID. Ini bekerja dengan menghambat enzim COX (cyclooxygenase) yang berperan dalam produksi prostaglandin. Prostaglandin adalah senyawa yang bertanggung jawab atas peradangan, nyeri, dan demam. Dengan mengurangi produksi prostaglandin, mefenamic acid membantu meredakan peradangan dan nyeri.",
+  "formula": "C15H15NO2."
+},
+{
+  "_id": {
+    "$oid": "65126af354abee1755415a44"
+  },
+  "namaObat": "Deksametason",
+  "komposisi": "Dexamethasone",
+  "kegunaanUtama": "Mengurangi radang, Imunosupresi, Penyakit Paru-paru",
+  "deskripsi": "Deksametason termasuk dalam kelas obat kortikosteroid, yang merupakan senyawa yang mirip dengan hormon kortisol yang diproduksi oleh kelenjar adrenal. Obat ini bekerja dengan mengurangi peradangan dan meredakan sistem kekebalan tubuh yang berlebihan.",
+  "formula": "C22H29FO5"
+},
+{
+  "_id": {
+    "$oid": "6512a3d6e5a814c506cdac15"
+  },
+  "namaObat": "Ibuprofen",
+  "komposisi": "Ibuprofen",
+  "kegunaanUtama": "Mengurangi nyeri, demam, migraine, radang",
+  "deskripsi": "Ibuprofen termasuk dalam kelas obat NSAID, yang bekerja dengan menghambat enzim COX (cyclooxygenase) yang berperan dalam produksi prostaglandin. Prostaglandin adalah senyawa yang bertanggung jawab atas peradangan, nyeri, dan demam. Dengan mengurangi produksi prostaglandin, ibuprofen membantu meredakan peradangan dan nyeri. Penting untuk tidak melebihi dosis yang dianjurkan dan untuk menghindari penggunaan jangka panjang tanpa pengawasan medis, karena ibuprofen dapat memiliki efek samping yang merugikan, termasuk masalah pencernaan, perdarahan lambung, dan risiko gangguan jantung. ",
+  "formula": "C13H18O2"
+},
+{
+  "_id": {
+    "$oid": "6512a55be5a814c506cdac16"
+  },
+  "namaObat": "Metformin",
+  "komposisi": "Metformin",
+  "kegunaanUtama": "Pengobatan diabetes tipe 2, mengontrol gula darah, Menurunkan Resistensi Insulin, Pencegahan Komplikasi Diabetes",
+  "deskripsi": "Metformin adalah obat yang termasuk dalam kelas biguanida. Ia bekerja dengan meningkatkan sensitivitas tubuh terhadap insulin, yang membantu mengatur kadar gula darah. Metformin juga dapat mempengaruhi produksi glukosa oleh hati. Metformin digunakan dalam pengobatan diabetes tipe 2 dan seringkali digunakan sebagai bagian dari rencana perawatan yang mencakup diet, olahraga, dan pengendalian berat badan. Metformin umumnya memiliki efek samping ringan, seperti gangguan pencernaan, tetapi efek samping yang lebih serius seperti asidosis laktat (kondisi langka) juga mungkin terjadi dalam kasus tertentu. Sebelum menggunakan metformin, pasien dengan kondisi medis tertentu atau yang sedang mengonsumsi obat-obatan lain harus berkonsultasi dengan dokter. Selain itu, pasien yang menggunakan metformin harus dipantau secara teratur untuk mengawasi kadar gula darah dan respons terhadap obat ini.",
+  "formula": "C4H11N5"
+},
+{
+  "_id": {
+    "$oid": "6512a612e5a814c506cdac17"
+  },
+  "namaObat": "Simvastatin",
+  "komposisi": "simvastatine",
+  "kegunaanUtama": "Mengatasi Kolesterol Tinggi, Pencegahan Penyakit Jantung, Pengobatan Hiperkolesterolemia Familiar",
+  "deskripsi": "Simvastatin adalah agen penghambat HMG-CoA reductase, yang berperan dalam produksi kolesterol di tubuh. Dengan menghambat enzim ini, simvastatin mengurangi produksi kolesterol dalam hati dan meningkatkan kemampuan tubuh untuk menghilangkan kolesterol dari aliran darah. Efek samping yang mungkin terkait dengan simvastatin meliputi gangguan pencernaan, nyeri otot, dan, dalam kasus yang jarang terjadi, masalah hati. Sebelum menggunakan simvastatin, pasien dengan kondisi medis tertentu atau yang sedang mengonsumsi obat-obatan lain harus berkonsultasi dengan dokter. Selain itu, pasien yang menggunakan simvastatin harus dipantau secara teratur untuk mengawasi kadar kolesterol dan respons terhadap obat ini.",
+  "formula": "C25H38O5"
+},
+{
+  "_id": {
+    "$oid": "6512a6bae5a814c506cdac18"
+  },
+  "namaObat": "Omeprazole",
+  "komposisi": "omeprazole",
+  "kegunaanUtama": "Mengatasi maag (Gastritis), GERD (Gastroesophageal Reflux Disease), H. pylori Eradikasi, Profilaksis NSAID-Induced Ulcer",
+  "deskripsi": "Omeprazole bekerja dengan menghambat enzim yang menghasilkan asam lambung dalam lambung. Ini mengurangi kadar asam lambung dalam sistem pencernaan, membantu mengurangi refluks asam lambung, dan mengatasi kondisi medis yang berkaitan dengan kelebihan asam lambung. Efek samping yang mungkin terkait dengan omeprazole termasuk gangguan pencernaan ringan seperti diare atau sembelit. Penggunaan jangka panjang omeprazole dalam dosis tinggi dapat terkait dengan risiko efek samping yang lebih serius, termasuk masalah tulang dan risiko infeksi usus. Sebelum menggunakan omeprazole, pasien harus berkonsultasi dengan dokter, terutama jika ada riwayat medis tertentu atau penggunaan obat-obatan lain yang perlu dipertimbangkan.",
+  "formula": "C17H19N3O3S"
+},
+{
+  "_id": {
+    "$oid": "6512a96de5a814c506cdac19"
+  },
+  "namaObat": "Metronidazol",
+  "komposisi": "metronidazole",
+  "kegunaanUtama": "Mengobati Infeksi Bakteri, Infeksi Protozoa, Infeksi Helicobacter pylori",
+  "deskripsi": "Metronidazole adalah sejenis antibakteri dan antiprotozoa. Ia bekerja dengan merusak DNA bakteri dan parasit, menghentikan pertumbuhan dan perkembangannya. \nEfek samping yang mungkin terkait dengan metronidazole meliputi gangguan pencernaan, rasa pahit di mulut, dan reaksi alergi. Penting untuk memberi tahu dokter Anda tentang riwayat medis dan obat-obatan lain yang sedang Anda gunakan, karena metronidazole dapat berinteraksi dengan beberapa jenis obat. Selain itu, Anda harus menghindari konsumsi alkohol selama pengobatan dengan metronidazole, karena interaksi antara alkohol dan obat ini dapat menyebabkan efek samping yang serius. Sebelum menggunakan metronidazole, konsultasikan dengan dokter untuk mendapatkan panduan yang tepat mengenai penggunaan obat ini.",
+  "formula": "C6H9N3O3"
+},
+{
+  "_id": {
+    "$oid": "6512a9cbe5a814c506cdac1a"
+  },
+  "namaObat": "Cetirizine",
+  "komposisi": "cetirizine",
+  "kegunaanUtama": "Meringankan gejala Rinitis Alergi, Alergi Kulit, Alergi Makanan",
+  "deskripsi": "Cetirizine adalah antihistamin generasi kedua. Antihistamin adalah obat yang bekerja dengan menghambat aksi histamin, suatu zat kimia alami dalam tubuh yang dilepaskan sebagai respons terhadap alergen. Histamin dapat menyebabkan gejala alergi seperti gatal, bersin, dan hidung tersumbat. Cetirizine membantu meredakan gejala ini dengan menghambat reseptor histamin.\n\nCetirizine biasanya tersedia dalam bentuk tablet atau sirup yang diminum secara oral. Dosisnya akan disesuaikan berdasarkan usia, berat badan, dan keparahan gejala. Cetirizine umumnya tidak menyebabkan efek mengantuk, sehingga sering dianggap sebagai antihistamin yang \"tidak mengantuk.\" Namun, reaksi tubuh terhadap obat ini dapat bervariasi, jadi perlu diingat bahwa beberapa orang mungkin mengalami sedikit kantuk setelah mengonsumsinya.\n\nPenting untuk mengikuti petunjuk dosis yang diberikan pada kemasan obat atau oleh dokter Anda saat menggunakan cetirizine. Jika Anda memiliki pertanyaan atau perlu panduan lebih lanjut mengenai penggunaan cetirizine, sebaiknya konsultasikan dengan dokter atau apoteker Anda.",
+  "formula": "C21H25ClN2O3"
+},
+{
+  "_id": {
+    "$oid": "6512aa72e5a814c506cdac1b"
+  },
+  "namaObat": "Metoklopramid",
+  "komposisi": "metoclopramide",
+  "kegunaanUtama": "Mengobati dan meredakan Mual dan Muntah, Gangguan Gerakan Usus, Sindrom Nefrotik, Alergi Obat",
+  "deskripsi": "Metoklopramid adalah obat yang bekerja dengan mengatur pergerakan otot-otot saluran pencernaan dan meningkatkan kontraksi lambung. Ini juga memiliki efek anti-mual yang membantu mengatasi mual dan muntah.\nMetoklopramid umumnya memiliki efek samping yang ringan, seperti kebingungan atau gangguan tidur, tetapi dalam beberapa kasus, dapat menyebabkan efek samping yang lebih serius seperti gangguan gerakan seperti diskinesia tardif (dyskinesia tardif). Sebelum menggunakan metoklopramid, pasien dengan kondisi medis tertentu atau yang sedang mengonsumsi obat-obatan lain harus berkonsultasi dengan dokter. Juga, perlu diingat bahwa metoklopramid memiliki sejumlah kontraindikasi dan dapat berinteraksi dengan obat-obatan lain, jadi perlu berkonsultasi dengan dokter atau apoteker sebelum menggunakannya.",
+  "formula": "C14H22ClN3O2"
+},
+{
+  "_id": {
+    "$oid": "6512aacae5a814c506cdac1c"
+  },
+  "namaObat": "Domperidon",
+  "komposisi": "domperidone",
+  "kegunaanUtama": "Meredakan Mual dan Muntah, Gastroparesis, Mengatasi Gejala Gastroesophageal Reflux",
+  "deskripsi": "Domperidone adalah obat yang bekerja dengan cara menghambat dopamine dalam otak. Ini meningkatkan pergerakan makanan melalui lambung dan usus serta mengurangi mual dan muntah.\nEfek samping yang mungkin terkait dengan domperidone meliputi gangguan pencernaan ringan, seperti diare atau sembelit. Efek samping yang lebih serius jarang terjadi, tetapi bisa mencakup gangguan irama jantung. Sebelum menggunakan domperidone, pasien dengan kondisi medis tertentu atau yang sedang mengonsumsi obat-obatan lain harus berkonsultasi dengan dokter. Juga, penting untuk mengetahui bahwa domperidone memiliki batasan dan peraturan penggunaan yang berbeda-beda di berbagai negara, jadi konsultasikan dengan dokter Anda atau apoteker tentang peraturan penggunaan yang berlaku di wilayah Anda.",
+  "formula": "C22H24ClN5O2"
+},
+{
+  "_id": {
+    "$oid": "6512ab39e5a814c506cdac1d"
+  },
+  "namaObat": "Furosemide",
+  "komposisi": "furosemide",
+  "kegunaanUtama": "Mengatasi Edema, Hipertensi, Edema Serebral, Terapi Obesitas, ",
+  "deskripsi": "Furosemide adalah obat diuretik yang digunakan untuk meningkatkan produksi urin dalam tubuh dengan menghilangkan kelebihan garam dan cairan. Furosemide bekerja dengan menghambat penyerapan kembali natrium, klorida, dan air dalam tubulus ginjal, sehingga mengurangi reabsorpsi cairan dan elektrolit dalam ginjal. Ini meningkatkan produksi urin dan membantu mengurangi kelebihan cairan dalam tubuh.\n\nEfek samping yang mungkin terkait dengan furosemide meliputi dehidrasi, ketidakseimbangan elektrolit seperti kekurangan kalium, tekanan darah rendah, dan perubahan fungsi ginjal. Pasien yang menggunakan furosemide harus dipantau secara teratur oleh dokter untuk memantau kadar elektrolit dalam tubuh dan respons terhadap obat ini. Sebelum menggunakan furosemide, pasien dengan kondisi medis tertentu atau yang sedang mengonsumsi obat-obatan lain harus berkonsultasi dengan dokter.",
+  "formula": "C12H11ClN2O5S"
+},
+{
+  "_id": {
+    "$oid": "6512ae19e5a814c506cdac1e"
+  },
+  "namaObat": "Amlodipine",
+  "komposisi": "amlodipine",
+  "kegunaanUtama": "Mengobati Tekanan Darah Tinggi (Hipertensi), Angina Pektoris, Iskemia Miokard (Penyakit Jantung Koroner)",
+  "deskripsi": "Amlodipine adalah obat yang digunakan untuk mengatasi tekanan darah tinggi (hipertensi) dan juga digunakan dalam pengobatan penyakit jantung koroner. Amlodipine adalah obat yang termasuk dalam kelas antagonis kalsium, khususnya antagonis kalsium tipe L. Obat ini bekerja dengan cara menghambat aliran kalsium ke dalam sel otot jantung dan pembuluh darah, yang mengakibatkan relaksasi pembuluh darah dan penurunan tekanan darah.\nEfek samping yang mungkin terkait dengan amlodipine meliputi edema (pembengkakan), sakit kepala, dan rasa lelah. Pasien yang menggunakan amlodipine harus dipantau secara teratur oleh dokter untuk memantau tekanan darah dan memeriksa efek samping. Sebelum menggunakan amlodipine, pasien dengan kondisi medis tertentu atau yang sedang mengonsumsi obat-obatan lain harus berkonsultasi dengan dokter. Amlodipine juga dapat berinteraksi dengan obat-obatan lain, jadi penting untuk memberi tahu dokter atau apoteker tentang obat-obatan yang sedang Anda gunakan.",
+  "formula": "C20H25ClN2O5"
+},
+{
+  "_id": {
+    "$oid": "6512ae95e5a814c506cdac1f"
+  },
+  "namaObat": "Clopidogrel",
+  "komposisi": "clopidogrel",
+  "kegunaanUtama": "Mengobati dan mencegah Serangan Jantung, Stroke, Penyakit Jantung Koroner, Angioplasti dan Pencegahan Komplikasi Vaskular",
+  "deskripsi": "Clopidogrel adalah obat antiplatelet yang digunakan untuk mencegah penggumpalan darah dan trombosis. Obat ini sering digunakan untuk mengurangi risiko serangan jantung, stroke, dan komplikasi vaskular pada orang dengan penyakit jantung atau penyakit pembuluh darah.\nClopidogrel adalah obat yang bekerja dengan cara menghambat aktivasi dan agregasi trombosit. Trombosit adalah sel darah kecil yang berperan dalam proses pembekuan darah. Dengan menghambat trombosit, clopidogrel membantu mencegah penggumpalan darah yang dapat menyumbat arteri dan menyebabkan serangan jantung atau stroke.\nEfek samping yang mungkin terkait dengan clopidogrel meliputi risiko pendarahan yang lebih tinggi, terutama jika pasien memiliki riwayat masalah pendarahan atau sedang mengonsumsi obat lain yang dapat mempengaruhi pembekuan darah. Pasien yang menggunakan clopidogrel harus dipantau secara teratur oleh dokter untuk memeriksa efek samping dan memastikan bahwa obat ini efektif dalam mencegah penggumpalan darah yang tidak diinginkan. Sebelum menggunakan clopidogrel, pasien harus memberi tahu dokter tentang riwayat medis mereka dan obat-obatan lain yang mereka gunakan.",
+  "formula": "C16H16ClNO2S"
+},
+{
+  "_id": {
+    "$oid": "6512b1f2e5a814c506cdac20"
+  },
+  "namaObat": "Ciprofloxacin",
+  "komposisi": "ciprofloxacin",
+  "kegunaanUtama": "mengobati berbagai infeksi bakteri, Infeksi Saluran Kemih (UTI), Infeksi Kulit, Infeksi Saluran Pernapasan, Infeksi Usus, Infeksi Jaringan Lunak dan Tulang",
+  "deskripsi": "Ciprofloxacin adalah antibiotik dari kelas fluorokuinolon yang digunakan untuk mengobati berbagai infeksi bakteri. Ini adalah obat resep yang digunakan untuk mengatasi infeksi pada berbagai bagian tubuh. \nCiprofloxacin bekerja dengan menghambat pertumbuhan dan perkembangan bakteri. Ini mengganggu DNA bakteri dan menghentikan replikasi DNA, yang akhirnya menyebabkan kematian bakteri.\nEfek samping yang mungkin terkait dengan ciprofloxacin meliputi gangguan pencernaan, sakit kepala, dan, dalam beberapa kasus, perubahan pada sistem saraf, tendon, atau kerusakan sendi (efek samping yang lebih serius yang mungkin terkait dengan penggunaan jangka panjang). Sebelum menggunakan ciprofloxacin, pasien harus memberi tahu dokter tentang riwayat medis mereka, alergi obat, dan obat-obatan lain yang mereka gunakan, karena interaksi obat mungkin terjadi. Pada beberapa kasus, ciprofloxacin mungkin tidak sesuai untuk semua individu atau tidak dianjurkan selama kehamilan atau menyusui, jadi konsultasikan dengan dokter Anda sebelum penggunaan.",
+  "formula": "C17H18FN3O3"
+},
+{
+  "_id": {
+    "$oid": "6512b2b4e5a814c506cdac21"
+  },
+  "namaObat": "Levofloxacin",
+  "komposisi": "lovofloxacin",
+  "kegunaanUtama": "Mengobati berbagai infeksi bakteri, Infeksi Telinga, Infeksi Tulang dan Sendi, Infeksi Abdominal, Infeksi Saluran Pernapasan, Infeksi Saluran Kemih (UTI)",
+  "deskripsi": "Levofloxacin adalah antibiotik dari kelas fluorokuinolon yang digunakan untuk mengobati berbagai infeksi bakteri. Ini adalah obat resep yang digunakan untuk mengatasi infeksi pada berbagai bagian tubuh.\nLevofloxacin bekerja dengan menghambat pertumbuhan dan perkembangan bakteri. Ini mengganggu DNA bakteri dan menghentikan replikasi DNA, yang akhirnya menyebabkan kematian bakteri.\nEfek samping yang mungkin terkait dengan levofloxacin meliputi gangguan pencernaan, sakit kepala, dan, dalam beberapa kasus, perubahan pada sistem saraf, tendon, atau kerusakan sendi (efek samping yang lebih serius yang mungkin terkait dengan penggunaan jangka panjang). Sebelum menggunakan levofloxacin, pasien harus memberi tahu dokter tentang riwayat medis mereka, alergi obat, dan obat-obatan lain yang mereka gunakan, karena interaksi obat mungkin terjadi. Penting untuk mengikuti petunjuk dokter secara ketat dan untuk tidak menggunakan levofloxacin tanpa resep medis yang sah.",
+  "formula": "C18H20FN3O4"
+},
+{
+  "_id": {
+    "$oid": "6512b87de5a814c506cdac22"
+  },
+  "namaObat": "Azithromycin",
+  "komposisi": "azithromycin",
+  "kegunaanUtama": "Mengobati berbagai jenis infeksi bakteri, Penyakit Menular Seksual, Infeksi Saluran Kemih, Infeksi Saluran Pernapasan Atas, Infeksi Saluran Pernapasan Bawah, Infeksi Kulit dan Jaringan Lunak",
+  "deskripsi": "Azithromycin adalah antibiotik yang digunakan untuk mengatasi berbagai jenis infeksi bakteri. Ini termasuk dalam kelas obat yang disebut makrolida. Azithromycin bekerja dengan cara menghambat pertumbuhan dan perkembangan bakteri. Ini mengganggu sintesis protein dalam sel bakteri, sehingga menyebabkan kematian bakteri. Efek samping yang mungkin terkait dengan azithromycin meliputi gangguan pencernaan, sakit kepala, dan gangguan sistem saraf. Sebelum menggunakan azithromycin, pasien harus memberi tahu dokter tentang riwayat medis mereka, alergi obat, dan obat-obatan lain yang mereka gunakan, karena interaksi obat mungkin terjadi. Azithromycin seharusnya hanya digunakan berdasarkan resep dokter dan sesuai dengan petunjuk medis yang diberikan.",
+  "formula": "C38H72N2O12"
+},
+{
+  "_id": {
+    "$oid": "6512b8f4e5a814c506cdac23"
+  },
+  "namaObat": "Abacavir",
+  "komposisi": "abacavir",
+  "kegunaanUtama": "Digunakan sebagai bagian dari terapi antiretroviral kombinasi untuk mengobati infeksi HIV dan AIDS, Profilaksis Pasca-Paparan (PEP)",
+  "deskripsi": "Abacavir adalah obat yang digunakan dalam pengobatan infeksi HIV (Human Immunodeficiency Virus) untuk membantu mengendalikan replikasi virus dan menjaga tingkat CD4 dalam tubuh. Obat ini termasuk dalam kelas obat yang disebut inhibitor transkriptase balik nukleosida (NRTI).\nAbacavir bekerja dengan menghambat enzim yang diperlukan oleh HIV untuk mereplikasi diri. Ini mengurangi jumlah virus dalam tubuh dan membantu menjaga sistem kekebalan tubuh pasien.\nEfek samping yang mungkin terkait dengan abacavir termasuk gangguan saluran pencernaan, reaksi alergi, gangguan darah, dan perubahan pada hati. Penting untuk memberi tahu dokter tentang riwayat medis, alergi obat, dan obat-obatan lain yang sedang digunakan, karena interaksi obat dapat terjadi. Juga, penting untuk mengikuti terapi antiretroviral dengan konsistensi dan tidak menghentikan penggunaan obat tanpa berkonsultasi dengan dokter, karena pengobatan HIV memerlukan ketaatan yang ketat.",
+  "formula": "C14H18N6O"
+},
+{
+  "_id": {
+    "$oid": "6512b9aae5a814c506cdac24"
+  },
+  "namaObat": "Acarbose",
+  "komposisi": "acarbose",
+  "kegunaanUtama": "Digunakan untuk mengatasi diabetes tipe 2 dan membantu mengontrol kadar gula darah, Pencegahan Komplikasi Diabetes, Pengurangan Risiko Serangan Jantung",
+  "deskripsi": "Acarbose adalah obat yang digunakan untuk mengendalikan kadar gula darah pada penderita diabetes tipe 2. Obat ini termasuk dalam kelas obat yang disebut inhibitor alfaglukosidase. Acarbose bekerja dengan menghambat enzim alfaglukosidase di saluran pencernaan. Ini membantu memperlambat pemecahan karbohidrat kompleks menjadi gula sederhana, sehingga mengurangi peningkatan gula darah setelah makan. Efek samping yang mungkin terkait dengan acarbose termasuk gangguan pencernaan seperti perut kembung dan diare. Pasien harus memberi tahu dokter tentang riwayat medis mereka dan obat-obatan lain yang sedang mereka gunakan. Selain itu, acarbose sering digunakan sebagai bagian dari rencana perawatan yang mencakup diet sehat dan latihan fisik untuk mengontrol diabetes. Pasien dengan diabetes perlu secara teratur memantau kadar gula darah mereka dan menjalani pemeriksaan rutin dengan dokter untuk memastikan kondisi mereka terkendali.",
+  "formula": "C25H43NO18"
+},
+{
+  "_id": {
+    "$oid": "6512ce71e5a814c506cdac25"
+  },
+  "namaObat": "Acebutolol",
+  "komposisi": "acebutolol",
+  "kegunaanUtama": "Mengobati hipertensi, aritmia, atau angina pektoris",
+  "deskripsi": "Acebutolol adalah obat beta-blocker yang digunakan untuk mengobati berbagai kondisi kardiovaskular, terutama hipertensi (tekanan darah tinggi) dan aritmia jantung. Ini mengurangi aksi adrenalin dan hormon lainnya yang meningkatkan denyut jantung dan tekanan darah. Efek samping yang mungkin terkait dengan acebutolol meliputi penurunan denyut jantung, kelelahan, gangguan tidur, dan gangguan pencernaan. Pasien yang menggunakan acebutolol harus dipantau secara teratur oleh dokter untuk memeriksa tekanan darah dan respons terhadap obat ini. Selain itu, tidak sebaiknya menghentikan penggunaan acebutolol secara tiba-tiba, karena hal ini dapat menyebabkan efek yang merugikan. Konsultasikan dengan dokter Anda jika Anda memiliki pertanyaan atau kekhawatiran tentang penggunaan acebutolol atau jika Anda mengalami efek samping yang tidak diinginkan.",
+  "formula": "C18H28N2O4"
+},
+{
+  "_id": {
+    "$oid": "6512cef3e5a814c506cdac26"
+  },
+  "namaObat": "Acetylcysteine",
+  "komposisi": "acetylcysteine",
+  "kegunaanUtama": "Mengencerkan dahak dan mengobati keracunan paracetamol, Penyakit Paru-Panumumab, Detoksifikasi pada Paparan Gas Beracun",
+  "deskripsi": "Acetylcysteine, juga dikenal sebagai N-acetylcysteine (NAC), adalah obat yang digunakan untuk berbagai tujuan medis. Ini adalah turunan dari asam amino sistein dan memiliki beberapa aplikasi dalam pengobatan. Acetylcysteine adalah sejenis agen mukolitik, yang berarti bahwa itu membantu melunakkan dan mengencerkan lendir dalam saluran pernapasan, membuatnya lebih mudah untuk dikeluarkan. Ini juga merupakan prekursor glutathione, sebuah antioksidan yang penting dalam tubuh. Efek samping yang mungkin terkait dengan acetylcysteine termasuk gangguan pencernaan, seperti mual dan muntah, serta reaksi alergi dalam beberapa kasus. Pasien harus memberi tahu dokter tentang riwayat medis mereka, alergi obat, dan obat-obatan lain yang mereka gunakan. Konsultasikan dengan dokter Anda jika Anda memiliki pertanyaan atau kekhawatiran tentang penggunaan acetylcysteine.",
+  "formula": "C5H9NO3S"
+},
+{
+  "_id": {
+    "$oid": "651366cb641c47f019a0a3e5"
+  },
+  "namaObat": "Acyclovir Topikal",
+  "komposisi": "acyclovir",
+  "kegunaanUtama": "mengobati infeksi kulit dan mukosa yang disebabkan oleh virus herpes, Herpes Simpleks, Herpes Zoster (Cacar Api), Herpes Genitalis",
+  "deskripsi": "Acyclovir topikal adalah bentuk obat yang digunakan untuk mengatasi infeksi kulit dan mukosa yang disebabkan oleh virus herpes, termasuk herpes simpleks (HSV) dan herpes zoster (cacar api). Acyclovir adalah obat antiviral yang bekerja dengan cara menghambat replikasi virus herpes dalam sel-sel yang terinfeksi. Ini menghentikan virus herpes untuk berkembang lebih lanjut dan mengurangi gejala infeksi.\nEfek samping yang mungkin terkait dengan acyclovir topikal adalah iritasi kulit, seperti gatal atau kemerahan pada area aplikasi. Jika iritasi parah atau reaksi alergi terjadi, segera beri tahu dokter. Pasien harus menjauhi area mata, mulut, dan membran mukosa saat mengoleskan krim acyclovir dan mencuci tangan dengan seksama setelah penggunaan. Konsultasikan dengan dokter Anda jika Anda memiliki pertanyaan atau kekhawatiran tentang penggunaan acyclovir topikal atau jika Anda mengalami efek samping yang tidak diinginkan.",
+  "formula": "C8H11N5O3"
+},
+{
+  "_id": {
+    "$oid": "651367ed641c47f019a0a3e6"
+  },
+  "namaObat": "Adenosine",
+  "komposisi": "adenine, gula ribosa, gugus fosfat",
+  "kegunaanUtama": "Sebagai obat tambahan dalam pemeriksaan radiologi jantung, Sistem Saraf, Anti-Inflamasi dan Vasodilasi, Regulasi Denyut Jantung",
+  "deskripsi": "Adenosine adalah nukleosida, yang merupakan salah satu unit dasar penyusun asam nukleat RNA dan DNA. Struktur kimia adenosine melibatkan ikatan antara basa purin adenin dan gula ribosa. Dalam bentuk injeksi intravena, adenosine digunakan untuk menghentikan episode aritmia tertentu dan mengembalikan denyut jantung normal.\nAdenosine juga menjadi target bagi beberapa obat yang digunakan dalam pengobatan kondisi seperti angina, yang bertujuan untuk mempengaruhi reseptor adenosin di jantung untuk melebarkan pembuluh darah koroner dan meningkatkan aliran darah ke otot jantung.\nPeran adenosine dalam tubuh sangat penting, dan pemahaman tentang fungsi dan regulasi adenosine terus berkembang dalam ilmu kedokteran dan biologi.",
+  "formula": "C10H13N5O4"
+},
+{
+  "_id": {
+    "$oid": "6513685c641c47f019a0a3e7"
+  },
+  "namaObat": "Adapalene",
+  "komposisi": "adapalene",
+  "kegunaanUtama": "Mencegah dan mengatasi jerawat atau komedo, Mengurangi Keriput dan Penuaan Kulit",
+  "deskripsi": "Adapalene adalah obat yang digunakan untuk mengobati masalah kulit seperti jerawat. Obat ini termasuk dalam kelas obat yang disebut retinoid, dan berfungsi dengan cara mengurangi peradangan dan membantu mencegah penyumbatan folikel rambut yang menyebabkan jerawat. Efek samping yang mungkin terkait dengan adapalene meliputi kulit kering, kemerahan, atau pengelupasan. Pasien harus mengikuti petunjuk dokter atau petunjuk pada kemasan obat saat menggunakan adapalene dan menjauhi penggunaan berlebihan karena dapat menyebabkan iritasi kulit yang lebih serius. Konsultasikan dengan dokter Anda jika Anda memiliki pertanyaan atau kekhawatiran tentang penggunaan adapalene atau jika Anda mengalami efek samping yang tidak diinginkan.",
+  "formula": "C28H28O3"
+},
+{
+  "_id": {
+    "$oid": "6513694f641c47f019a0a3e8"
+  },
+  "namaObat": "Albumin",
+  "komposisi": "albumine",
+  "kegunaanUtama": "Menangani syok hipovolemik dan hipoalbuminemia",
+  "deskripsi": "Albumin adalah jenis protein yang ditemukan dalam plasma darah manusia dan hewan. Ini adalah salah satu protein paling melimpah dalam plasma darah dan memiliki beberapa fungsi penting dalam tubuh. Albumin adalah protein dengan berat molekul tinggi yang terdiri dari rantai polipeptida panjang yang dilipat menjadi struktur tiga dimensi yang kompleks. Protein ini terdiri dari sekitar 585 asam amino. Albumin juga digunakan dalam pengobatan medis, terutama dalam penggantian volume cairan intravaskular dan pengobatan edema. Albumin dapat diberikan sebagai infus intravena kepada pasien dengan kekurangan albumin atau tekanan osmotik yang rendah dalam plasma darah.",
+  "formula": "C2936H4624N786O889S41"
+},
+{
+  "_id": {
+    "$oid": "651369c8641c47f019a0a3e9"
+  },
+  "namaObat": "Amoksilin",
+  "komposisi": "amoxicillin",
+  "kegunaanUtama": "Mengatasi infeksi bakteri, termasuk gonore, otitis media, atau infeksi ginjal (pielonefritis), Infeksi Hidung dan Tenggorokan, Infeksi Saluran Pernapasan",
+  "deskripsi": "Amoxicillin adalah obat golongan antibiotik beta-laktam, lebih khususnya termasuk dalam kelas antibiotik penicillin. Ini bekerja dengan menghambat pertumbuhan dan replikasi bakteri dengan cara mengganggu pembentukan dinding sel bakteri. Efek samping yang mungkin terkait dengan amoxicillin meliputi gangguan pencernaan seperti mual, diare, dan reaksi alergi pada beberapa individu. Pasien harus memberi tahu dokter tentang riwayat medis mereka, alergi obat, dan obat-obatan lain yang mereka gunakan. Konsultasikan dengan dokter Anda jika Anda memiliki pertanyaan atau kekhawatiran tentang penggunaan amoxicillin atau jika Anda mengalami efek samping yang tidak diinginkan.",
+  "formula": "C16H19N3O5S"
+},
+{
+  "_id": {
+    "$oid": "65136a76641c47f019a0a3ea"
+  },
+  "namaObat": "Amylmetacresol",
+  "komposisi": "amylmetacresol",
+  "kegunaanUtama": "Meredakan sakit tenggorokan, Penyegar Napas, Antiseptik Lokal",
+  "deskripsi": "Amylmetacresol adalah zat yang digunakan dalam beberapa produk kesehatan dan obat-obatan sebagai agen antiseptik dan penyegar napas. Ini adalah senyawa kimia yang sering ditemukan dalam permen hisap, semprotan tenggorokan, atau tablet yang digunakan untuk meredakan sakit tenggorokan dan menjaga napas segar. Penting untuk mengikuti petunjuk penggunaan produk yang mengandung amylmetacresol, terutama dalam hal dosis dan frekuensi penggunaan. Jika Anda memiliki pertanyaan atau kekhawatiran tentang penggunaan produk yang mengandung amylmetacresol, konsultasikan dengan dokter atau apoteker Anda.",
+  "formula": "C14H20O"
+},
+{
+  "_id": {
+    "$oid": "65136beb641c47f019a0a3eb"
+  },
+  "namaObat": "Loxapine",
+  "komposisi": "antipsychotics",
+  "kegunaanUtama": "mengobati kondisi-kondisi seperti Skizofrenia, Gangguan Bipolar, Gangguan Psikotik Lainnya,",
+  "deskripsi": "Loxapine adalah obat antipsikotik yang digunakan dalam pengobatan berbagai gangguan mental, terutama dalam mengatasi gejala skizofrenia. Loxapine adalah obat resep dan harus diambil sesuai petunjuk dokter. Dosis yang diresepkan dan durasi pengobatan akan disesuaikan berdasarkan kondisi individu dan respons terhadap obat. Efek Samping Ekstrapiramidal: Ini termasuk gangguan gerakan seperti parkinsonisme, distonia, dan diskinisia tardif, Sedasi: Beberapa orang mungkin merasa kantuk atau mengantuk saat menggunakan loxapine, Kenaikan Berat Badan: Penggunaan loxapine juga dapat berhubungan dengan kenaikan berat badan, Efek Samping Metabolik: Seperti peningkatan kadar gula darah dan lemak darah. Penting untuk berbicara dengan dokter Anda tentang efek samping yang mungkin muncul selama penggunaan loxapine dan untuk memantau kondisi kesehatan Anda selama pengobatan. Selalu ikuti petunjuk dokter Anda dan jangan menghentikan penggunaan loxapine tanpa berkonsultasi terlebih dahulu, karena penghentian mendadak dapat menyebabkan gejala penarikan. Konsultasikan dengan profesional medis yang kompeten dalam bidang ini untuk mendiskusikan manfaat dan risiko yang terkait dengan penggunaan loxapine.",
+  "formula": "C18H18ClN3S"
+},
+{
+  "_id": {
+    "$oid": "65136c53641c47f019a0a3ec"
+  },
+  "namaObat": "Fluspirilene",
+  "komposisi": "antipsychotic",
+  "kegunaanUtama": "pengobatan skizofernia",
+  "deskripsi": "Fluspirilene adalah obat antipsikotik yang bekerja dengan menghambat reseptor dopamin di otak. Ini mengatur aktivitas neurotransmitter dan dapat membantu mengurangi gejala seperti halusinasi, waham, dan perubahan pemikiran yang sering terjadi pada penderita skizofrenia.\nFluspirilene adalah obat resep dan harus diambil sesuai petunjuk dokter. Dosis yang diresepkan dan durasi pengobatan akan disesuaikan berdasarkan kondisi individu dan respons terhadap obat. Efek Samping Ekstrapiramidal: Ini termasuk gangguan gerakan seperti parkinsonisme, distonia, dan diskinisia tardif. Sedasi: Beberapa orang mungkin merasa kantuk atau mengantuk saat menggunakan fluspirilene. Efek Samping Metabolik: Seperti peningkatan berat badan dan gangguan metabolisme. Penting untuk berbicara dengan dokter Anda tentang efek samping yang mungkin muncul selama penggunaan fluspirilene dan untuk memantau kondisi kesehatan Anda selama pengobatan. Selalu ikuti petunjuk dokter Anda dan jangan menghentikan penggunaan fluspirilene tanpa berkonsultasi terlebih dahulu, karena penghentian mendadak dapat menyebabkan gejala penarikan. Konsultasikan dengan profesional medis yang kompeten dalam bidang ini untuk mendiskusikan manfaat dan risiko yang terkait dengan penggunaan fluspirilene.",
+  "formula": "C24H29F3N2O4"
+},
+{
+  "_id": {
+    "$oid": "65136d2e641c47f019a0a3ed"
+  },
+  "namaObat": "Atenolol",
+  "komposisi": "atenolol",
+  "kegunaanUtama": "Mengatasi hipertensi dan angina, Aritmia Jantung, Migrain",
+  "deskripsi": "Atenolol bekerja dengan menghambat reseptor beta di jantung dan pembuluh darah. Ini mengurangi efek hormon adrenalin yang berperan dalam meningkatkan denyut jantung dan tekanan darah. Dengan demikian, atenolol mengurangi beban jantung dan tekanan darah.\nPenggunaan atenolol dapat menyebabkan efek samping, termasuk:\n\nPenurunan Detak Jantung: Atenolol dapat menyebabkan penurunan denyut jantung.\nHipotensi: Beberapa orang mungkin mengalami penurunan tekanan darah yang signifikan.\nKelelahan: Atenolol dapat menyebabkan kelelahan atau kelemahan.\nGangguan Saluran Pencernaan: Efek samping gastrointestinal seperti mual dan diare.\n\nPenting untuk mengikuti petunjuk dokter dan konsultasikan dengan dokter Anda tentang efek samping yang mungkin muncul selama penggunaan atenolol. Jika Anda memiliki masalah atau kekhawatiran, konsultasikan dengan dokter Anda. Tidak disarankan untuk menghentikan penggunaan atenolol secara mendadak, dan penurunan dosis harus dilakukan di bawah pengawasan medis.",
+  "formula": "C14H22N2O3"
+},
+{
+  "_id": {
+    "$oid": "65136eee641c47f019a0a3ee"
+  },
+  "namaObat": "Carbamazepine ",
+  "komposisi": "anticonvulsant",
+  "kegunaanUtama": "Pengobatan epilepsi, Neuralgia Trigeminal, Gangguan Bipolar",
+  "deskripsi": "Carbamazepine adalah obat antikonvulsan yang digunakan dalam pengobatan berbagai kondisi, termasuk epilepsi dan neuralgia trigeminal (nyeri hebat pada wajah). Penggunaan carbamazepine dapat menyebabkan efek samping, yang bervariasi tergantung pada individu. Beberapa efek samping yang umum meliputi: Kebingungan, Kelelahan, Pusing, Gangguan koordinasi, Gangguan pencernaan seperti mual dan muntah, Gangguan hati.\nPenting untuk mengikuti petunjuk dokter dan konsultasikan dengan dokter Anda tentang efek samping yang mungkin muncul selama penggunaan carbamazepine. Jika Anda memiliki masalah atau kekhawatiran, konsultasikan dengan dokter Anda. Tidak disarankan untuk menghentikan penggunaan carbamazepine secara mendadak, dan penurunan dosis harus dilakukan di bawah pengawasan medis. Jika Anda atau seseorang yang Anda kenal memerlukan pengobatan dengan carbamazepine, penting untuk berbicara dengan profesional medis yang kompeten dalam bidang ini untuk mendiskusikan manfaat dan risiko yang terkait dengan penggunaan obat tersebut.",
+  "formula": "C15H12N2O"
+},
+{
+  "_id": {
+    "$oid": "65136fa0641c47f019a0a3ef"
+  },
+  "namaObat": "Dilantin",
+  "komposisi": "Phenytoin, anticonvulsant",
+  "kegunaanUtama": "Pengobatan Epilepsi, Gangguan Kejang, Neuralgia Trigeminal",
+  "deskripsi": "Dilantin adalah merek dagang dari phenytoin, yang merupakan obat antikonvulsan yang digunakan dalam pengobatan epilepsi dan beberapa gangguan neurologis lainnya. Sebagai merek dagang, Dilantin mengandung phenytoin sebagai bahan aktif utamanya. Efek Samping:\nPenggunaan Dilantin dapat menyebabkan efek samping, yang bervariasi tergantung pada individu. Beberapa efek samping yang umum meliputi:\nKebingungan, Gangguan koordinasi, Kelelahan, Gangguan pencernaan seperti mual, Gangguan kulit seperti ruam.\nPenting untuk mengikuti petunjuk dokter dan konsultasikan dengan dokter Anda tentang efek samping yang mungkin muncul selama penggunaan Dilantin. Jangan menghentikan penggunaan Dilantin secara mendadak, karena hal ini dapat meningkatkan risiko serangan kejang. Perubahan dalam dosis atau penghentian penggunaan harus dilakukan di bawah pengawasan medis. Jika Anda atau seseorang yang Anda kenal memerlukan pengobatan dengan Dilantin, penting untuk berbicara dengan profesional medis yang kompeten dalam bidang ini untuk mendiskusikan manfaat dan risiko yang terkait dengan penggunaan obat tersebut.",
+  "formula": "C15H12N2O2"
+},
+{
+  "_id": {
+    "$oid": "65137061641c47f019a0a3f0"
+  },
+  "namaObat": "Betadine",
+  "komposisi": "povidone, iodine",
+  "kegunaanUtama": "Membersihkan dan mendisinfeksi kulit, Perawatan Luka, Pengobatan Infeksi Kulit, Pencegahan Infeksi",
+  "deskripsi": "Betadine adalah merek dagang dari larutan antiseptik yang mengandung povidone-iodine sebagai bahan aktif utama. Ini adalah zat yang digunakan untuk membersihkan dan mendisinfeksi kulit, luka, atau mukosa sebelum tindakan medis atau pembedahan. Betadine mengandung povidone-iodine sebagai bahan aktif antiseptiknya. Ini bekerja dengan melepaskan iodin saat kontak dengan kulit atau luka, yang memiliki sifat antiseptik dan membantu membunuh mikroorganisme seperti bakteri, virus, dan jamur.",
+  "formula": "C6H9I2NO"
+},
+{
+  "_id": {
+    "$oid": "6513710d641c47f019a0a3f1"
+  },
+  "namaObat": "Atorvastatine",
+  "komposisi": "atorvastatin calcium trihydrate",
+  "kegunaanUtama": "Menurunkan kolesterol, mengurangi risiko terjadinya penyakit jantung atau stroke",
+  "deskripsi": "Atorvastatin adalah obat yang termasuk dalam kelas statin yang digunakan untuk mengurangi kadar kolesterol tinggi dalam darah. Obat ini membantu mengurangi kolesterol LDL (kolesterol jahat) dan trigliserida dalam tubuh serta meningkatkan kadar kolesterol HDL (kolesterol baik). Atorvastatin adalah obat yang bekerja dengan menghambat enzim HMG-CoA reductase, yang terlibat dalam produksi kolesterol dalam tubuh. Dengan menghambat enzim ini, atorvastatin membantu mengurangi produksi kolesterol oleh hati dan mengurangi kadar kolesterol dalam darah. \n\nEfek Samping: Penggunaan atorvastatin dapat menyebabkan efek samping, yang bervariasi tergantung pada individu. Beberapa efek samping yang umum meliputi: Sakit kepala,, Gangguan pencernaan seperti mual atau diare, Gangguan otot, Penyakit hati yang jarang terjadi tetapi serius\nPenting untuk mengikuti petunjuk dokter dan konsultasikan dengan dokter Anda tentang efek samping yang mungkin muncul selama penggunaan atorvastatin. Jika Anda memiliki masalah atau kekhawatiran, konsultasikan dengan dokter Anda. Pemantauan rutin dapat diperlukan untuk memantau efek samping yang potensial. Jika Anda disarankan atau diresepkan atorvastatin, penting untuk berbicara dengan profesional medis yang kompeten dalam bidang ini untuk mendiskusikan manfaat dan risiko yang terkait dengan penggunaan obat ini.\n\n\n\n\n\n",
+  "formula": "C33H35FN2O5"
+}]

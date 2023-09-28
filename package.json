@@ -1,0 +1,72 @@
+{
+  "name": "kmeans-nextjs",
+  "description": "K-Means website dengan optimasi Elbow",
+  "license": "Creative-Commons",
+  "version": "1.0.0",
+  "author": {
+    "name": "GPAUDRA",
+    "url": "https://github.com/GesangPJ"
+  },
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GesangPJ/katalog-obat.git"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "material-design",
+    "nextjs",
+    "material-ui",
+    "kmeans",
+    "elbow",
+    "NodeJS",
+    "ExpressJS",
+    "MongoDB"
+  ],
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "lint": "eslint --fix \"src/**/*.{js,jsx}\"",
+    "format": "prettier --write \"src/**/*.{js,jsx}\""
+  },
+  "dependencies": {
+    "@emotion/cache": "^11.6.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.9",
+    "@mui/lab": "^5.0.0-alpha.70",
+    "@mui/material": "^5.14.10",
+    "@mui/x-data-grid": "^6.15.0",
+    "@popperjs/core": "^2.11.2",
+    "apexcharts-clevision": "3.28.5",
+    "babel-eslint": "^10.1.0",
+    "clsx": "^1.1.1",
+    "mdi-material-ui": "^7.1.0",
+    "mongodb": "^6.1.0",
+    "next": "12.0.4",
+    "nprogress": "^0.2.0",
+    "react": "17.0.2",
+    "react-apexcharts": "^1.3.9",
+    "react-datepicker": "^4.5.0",
+    "react-dom": "17.0.2",
+    "react-dropzone": "^14.2.3",
+    "react-perfect-scrollbar": "^1.5.8",
+    "react-popper": "^2.2.5",
+    "react-router-dom": "^6.16.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "12.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "next-transpile-modules": "^9.0.0",
+    "prettier": "2.5.1"
+  }
+}
