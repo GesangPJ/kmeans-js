@@ -83,6 +83,9 @@ const normalizeAndSaveData = async () => {
     await database.dropCollection('normalize');
     await database.createCollection('normalize');
 
+    // Sort normalizedDocuments by 'tanggaljam' in ascending order (oldest first)
+    normalizedDocuments.sort((a, b) => a.tanggaljam - b.tanggaljam);
+
     const normalizeCollection = database.collection('normalize');
     await normalizeCollection.insertMany(normalizedDocuments);
 
