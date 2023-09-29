@@ -68,14 +68,23 @@ const normalizeAndSaveData = async () => {
       },
     };
 
-    const normalizedData = normalizeData(sensorData, minMax);
+    const { normalizedData } = normalizeData(sensorData, minMax);
+
+    // Convert normalizedData to an array of documents
+    const normalizedDocuments = normalizedData.map((record) => ({
+      tanggaljam: record.tanggaljam,
+      suhu: record.suhu,
+      pH: record.pH,
+      kelembaban: record.kelembaban,
+      kondisi: record.kondisi,
+    }));
 
     // Drop the existing 'normalize' collection and recreate it
     await database.dropCollection('normalize');
     await database.createCollection('normalize');
 
     const normalizeCollection = database.collection('normalize');
-    await normalizeCollection.insertMany(normalizedData);
+    await normalizeCollection.insertMany(normalizedDocuments);
 
     console.log('Dataset telah dinormalisasi dan disimpan dalam collection normalize');
     console.log('MinMax Values:', minMax);
