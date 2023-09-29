@@ -19,6 +19,7 @@ async function connectToMongoDB() {
     console.log('MongoDB connected successfully'); // Add this line for debugging
 
     // Change the database and collection names here
+    const db = client.db("kmeans-kopi")
     const database = client.db("kmeans-kopi");
     const collection = database.collection("dataset");
 
