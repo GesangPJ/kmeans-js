@@ -12,19 +12,36 @@ app.use(express.json())
 app.use(cors())
 
 // Method Normalisasi Dataset
-const normalizeData = (data, minMax) => {
+const normalizeData = (data) => {
+  const minMax = {};
+
+  // Sort the data based on _id in descending order to get the latest data first
+  data.sort((a, b) => b._id.getTimestamp() - a._id.getTimestamp());
+
   const normalizedData = data.map((record) => {
+    if (!minMax.tanggaljam) {
+      minMax.tanggaljam = { min: record.tanggaljam, max: record.tanggaljam };
+    } else {
+      if (record.tanggaljam < minMax.tanggaljam.min) {
+        minMax.tanggaljam.min = record.tanggaljam;
+      }
+      if (record.tanggaljam > minMax.tanggaljam.max) {
+        minMax.tanggaljam.max = record.tanggaljam;
+      }
+    }
+
     return {
       tanggaljam: record.tanggaljam,
-      suhu: (record.suhu - minMax.suhu.min) / (minMax.suhu.max - minMax.suhu.min),
-      pH: (record.pH - minMax.pH.min) / (minMax.pH.max - minMax.pH.min),
-      kelembaban: (record.kelembaban - minMax.kelembaban.min) / (minMax.kelembaban.max - minMax.kelembaban.min),
-      kondisi: (record.kondisi - minMax.kondisi.min) / (minMax.kondisi.max - minMax.kondisi.min),
+      suhu: (record.suhu - 15) / (35 - 15),
+      pH: record.pH / 14,
+      kelembaban: (record.kelembaban - 30) / (80 - 30),
+      kondisi: (record.kondisi - 1) / (3 - 1),
     };
   });
 
-  return normalizedData;
-}
+  return { normalizedData, minMax };
+};
+
 
 const normalizeAndSaveData = async () => {
   try {
