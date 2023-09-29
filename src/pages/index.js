@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 
 import TableObatGenerik from 'src/pages/tableobatgenerik'
+import TableSensorData from './tablesensordata'
 
 const ObatGenerik = () => {
   return (
@@ -13,14 +14,14 @@ const ObatGenerik = () => {
       <Grid item xs={12}>
         <Typography variant='h5'>
           <Link href='' target='_blank'>
-            Data Processing
+            Sensor Data
           </Link>
         </Typography>
       </Grid>
       <Grid item xs={12}>
         <Card>
           <CardHeader title='Obat Generik' titleTypographyProps={{ variant: 'h6' }} />
-          <TableObatGenerik />
+          <TableSensorData />
         </Card>
       </Grid>
     </Grid>
