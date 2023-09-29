@@ -16,8 +16,8 @@ app.use(cors())
 const normalizeData = (data) => {
   const minMax = {};
 
-  // Sort the data based on _id in descending order to get the latest data first
-  data.sort((a, b) => b._id.getTimestamp() - a._id.getTimestamp());
+  // Sort the data based on tanggaljam in ascending order to get the oldest data first
+  data.sort((a, b) => new Date(a.tanggaljam) - new Date(b.tanggaljam));
 
   const normalizedData = data.map((record) => {
     if (!minMax.tanggaljam) {
