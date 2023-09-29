@@ -22,48 +22,49 @@ const columns = [
   { id: 'pH', label: 'pH', align: 'left', sortable: true },
   { id: 'kelembaban', label: 'Kelembaban', align: 'left', sortable: true },
   { id: 'kondisi', label: 'Kondisi', align: 'left', sortable: false } // No sorting for this column
-];
+]
 
 function createData(tanggaljam, suhu, pH, kelembaban, kondisi) {
-  return { tanggaljam, suhu, pH, kelembaban, kondisi };
+  return { tanggaljam, suhu, pH, kelembaban, kondisi }
 }
 
 function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
+  const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) return order;
+    const order = comparator(a[0], b[0])
+    if (order !== 0) return order
 
-    return a[1] - b[1];
+    return a[1] - b[1]
   });
 
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map((el) => el[0])
 }
 
 function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
+    : (a, b) => -descendingComparator(a, b, orderBy)
 }
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
-    return -1;
+    return -1
   }
   if (b[orderBy] > a[orderBy]) {
-    return 1;
+    return 1
   }
 
-  return 0;
+  return 0
 }
 
 const DatasetNormalisasi = () => {
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [sorting, setSorting] = useState({ column: 'tanggaljam', direction: 'asc' });
+  const [successMessage, setSuccessMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [data, setData] = useState([])
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [sorting, setSorting] = useState({ column: 'tanggaljam', direction: 'asc' })
+  const [lastNormalizationTime, setLastNormalizationTime] = useState('');
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -87,12 +88,13 @@ const DatasetNormalisasi = () => {
           const result = await response.json();
           setData(result);
         } else {
-          console.error('Error Mendapatkan Data Dari Sensor Data');
+          console.error('Error fetching data from Sensor Data');
         }
       } catch (error) {
         console.error('Error:', error);
       }
     };
+
     fetchData();
   }, []);
 
@@ -103,12 +105,19 @@ const DatasetNormalisasi = () => {
       });
       if (response.ok) {
         // Normalization process started successfully
-        console.log('Normalization process started.');
+        console.log('Normalization process started.')
+
+        const currentTime = new Date().toLocaleString()
+        setLastNormalizationTime(currentTime)
+
+        // Store lastNormalizationTime in local storage
+        localStorage.setItem('lastNormalizationTime', currentTime)
 
         // Reload the page to get the latest data
         window.location.reload();
+
       } else {
-        console.error('Normalization process failed.');
+        console.error('Normalization process failed.')
       }
     } catch (error) {
       console.error('Error starting normalization process:', error);
@@ -131,7 +140,12 @@ const DatasetNormalisasi = () => {
             onClick={handleNormalizationClick}
           >
             Mulai Normalisasi
-          </Button>
+          </Button><br></br>
+          {lastNormalizationTime && (
+            <div>
+              Normalisasi terakhir: {lastNormalizationTime}
+            </div>
+          )}
         </CardContent>
       </Card>
       <br></br>
