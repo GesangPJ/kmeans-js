@@ -1,7 +1,8 @@
-const express = require('express');
-const { connectToMongoDB } = require('./mongoDB'); // Import the correct mongoDB connection function
-const cors = require('cors');
-const multer = require('multer');
+const express = require('express')
+const { connectToMongoDB } = require('./mongoDB')
+const cors = require('cors')
+const multer = require('multer')
+const fetch = require('node-fetch')
 
 const app = express()
 const storage = multer.memoryStorage()
@@ -45,8 +46,13 @@ const normalizeData = (data) => {
 
 const normalizeAndSaveData = async () => {
   try {
-    const { collection, database } = await connectToMongoDB();
-    const sensorData = await collection.find().toArray();
+    // Make an HTTP GET request to fetch sensor data from the API route
+    const response = await fetch('http://localhost:3001/api/get-sensordata');
+    if (!response.ok) {
+      throw new Error('Failed to fetch sensor data from the API');
+    }
+
+    const sensorData = await response.json();
 
     // Calculate minMax values dynamically
     const minMax = {
@@ -80,6 +86,7 @@ const normalizeAndSaveData = async () => {
     }));
 
     // Drop the existing 'normalize' collection and recreate it
+    const { database } = await connectToMongoDB();
     await database.dropCollection('normalize');
     await database.createCollection('normalize');
 
