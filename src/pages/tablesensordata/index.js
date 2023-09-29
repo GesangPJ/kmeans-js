@@ -14,29 +14,17 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 const columns = [
-  { id: 'tanggaljam', label: 'Tanggal Jam', minWidth: 170, sortable: true },
-  { id: 'suhu', label: 'Suhu', minWidth: 100, sortable: true },
-  { id: 'pH', label: 'pH', minWidth: 100, sortable: true },
-  {
-    id: 'kelembaban',
-    label: 'Kelembaban',
-    minWidth: 170,
-    align: 'left',
-    sortable: true,
-  },
-  {
-    id: 'kondisi',
-    label: 'Kondisi',
-    minWidth: 170,
-    align: 'right',
-    format: (value) => value.toFixed(2),
-    sortable: false, // No sorting for this column
-  },
+  { id: 'tanggaljam', label: 'Tanggal Jam', maxWidth: 100, align: 'left', sortable: true },
+  { id: 'suhu', label: 'Suhu', align: 'left', sortable: true },
+  { id: 'pH', label: 'pH', align: 'left', sortable: true },
+  { id: 'kelembaban', label: 'Kelembaban', align: 'left', sortable: true },
+  { id: 'kondisi', label: 'Kondisi', align: 'left', sortable: false } // No sorting for this column
 ];
 
 function createData(tanggaljam, suhu, pH, kelembaban, kondisi) {
   return { tanggaljam, suhu, pH, kelembaban, kondisi };
 }
+
 function stableSort(array, comparator) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -107,7 +95,7 @@ const TableSensorData = () => {
     fetchData();
   }, []);
 
-  const rows = data.map((row) => createData(row.tanggaljam, row.suhu, row.pH, row.kelembaban));
+  const rows = data.map((row) => createData(row.tanggaljam, row.suhu, row.pH, row.kelembaban, row.kondisi));
 
   // Sorting function
   const sortedData = stableSort(rows, getComparator(sorting.direction, sorting.column));
@@ -154,7 +142,9 @@ const TableSensorData = () => {
                 {columns.map((column) => {
                   return (
                     <TableCell key={column.id} align={column.align}>
-                      {column.format && typeof value === 'number' ? column.format(value) : value}
+                      {column.format && typeof row[column.id] === 'number'
+                        ? column.format(row[column.id])
+                        : row[column.id]}
                     </TableCell>
                   );
                 })}
