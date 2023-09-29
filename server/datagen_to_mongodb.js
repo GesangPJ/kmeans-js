@@ -17,7 +17,13 @@ import('random').then(async (randomModule) => {
 
   // Fungsi generate data keseluruhan
   function generate_data() {
-    const tanggaljam = random_datetime(DateTime.fromISO('2023-01-01'), DateTime.fromISO('2023-12-31'));
+    // Menggunakan waktu UTC untuk generate tanggaljam
+    const currentDatetimeUTC = DateTime.utc();
+
+    // Menggunakan UTC+7 (Jakarta)
+    const tanggaljam = currentDatetimeUTC.plus({ hours: 7 });
+
+    // Generate data lainnya
     const suhu = random.int(15, 35);
     const pH = random.int(0, 14);
     const kelembaban = random.int(30, 80);
@@ -51,8 +57,8 @@ import('random').then(async (randomModule) => {
     await collection.deleteMany({});
     await collection.insertMany(data);
 
-    console.log("Data has been replaced in the 'sensor_data' collection.");
+    console.log("Berhasil generate data ke MongoDB");
   } catch (error) {
-    console.error("An error occurred:", error);
+    console.error("Error :", error);
   }
 });
