@@ -5,7 +5,6 @@ import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
 import CardHeader from '@mui/material/CardHeader'
 
-import TableObatGenerik from 'src/pages/tableobatgenerik'
 import TableSensorData from './tablesensordata'
 
 const ObatGenerik = () => {
@@ -20,7 +19,7 @@ const ObatGenerik = () => {
       </Grid>
       <Grid item xs={12}>
         <Card>
-          <CardHeader title='Obat Generik' titleTypographyProps={{ variant: 'h6' }} />
+          <CardHeader title='Tabel Sensor Data' titleTypographyProps={{ variant: 'h6' }} />
           <TableSensorData />
         </Card>
       </Grid>
