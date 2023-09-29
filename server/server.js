@@ -1,8 +1,8 @@
-const express = require('express');
-const { connectToMongoDB } = require('./mongoDB'); // Import the correct mongoDB connection function
-const cors = require('cors');
-const multer = require('multer');
-const { spawn } = require('child_process');
+const express = require('express')
+const { connectToMongoDB } = require('./mongoDB')
+const cors = require('cors')
+const multer = require('multer')
+const fetch = require('node-fetch')
 
 const app = express()
 const storage = multer.memoryStorage()
@@ -12,9 +12,12 @@ const upload = multer({ storage })
 app.use(express.json())
 app.use(cors())
 
-// Dataset Normalization
+// Method Normalisasi Dataset
 const normalizeData = (data) => {
-  const minMax = {}
+  const minMax = {};
+
+  // Sort the data based on tanggaljam in ascending order to get the oldest data first
+  data.sort((a, b) => new Date(a.tanggaljam) - new Date(b.tanggaljam));
 
   const normalizedData = data.map((record) => {
     if (!minMax.tanggaljam) {
@@ -40,18 +43,58 @@ const normalizeData = (data) => {
   return { normalizedData, minMax };
 }
 
+
 const normalizeAndSaveData = async () => {
   try {
-    const { collection, database } = await connectToMongoDB();
-    const sensorData = await collection.find().toArray();
-    const { normalizedData, minMax } = normalizeData(sensorData);
+    // Make an HTTP GET request to fetch sensor data from the API route
+    const response = await fetch('http://localhost:3001/api/get-sensordata');
+    if (!response.ok) {
+      throw new Error('Failed to fetch sensor data from the API');
+    }
+
+    const sensorData = await response.json();
+
+    // Calculate minMax values dynamically
+    const minMax = {
+      suhu: {
+        min: Math.min(...sensorData.map((record) => record.suhu)),
+        max: Math.max(...sensorData.map((record) => record.suhu)),
+      },
+      pH: {
+        min: Math.min(...sensorData.map((record) => record.pH)),
+        max: Math.max(...sensorData.map((record) => record.pH)),
+      },
+      kelembaban: {
+        min: Math.min(...sensorData.map((record) => record.kelembaban)),
+        max: Math.max(...sensorData.map((record) => record.kelembaban)),
+      },
+      kondisi: {
+        min: Math.min(...sensorData.map((record) => record.kondisi)),
+        max: Math.max(...sensorData.map((record) => record.kondisi)),
+      },
+    };
+
+    const { normalizedData } = normalizeData(sensorData, minMax);
+
+    // Convert normalizedData to an array of documents
+    const normalizedDocuments = normalizedData.map((record) => ({
+      tanggaljam: record.tanggaljam,
+      suhu: record.suhu,
+      pH: record.pH,
+      kelembaban: record.kelembaban,
+      kondisi: record.kondisi,
+    }));
 
     // Drop the existing 'normalize' collection and recreate it
+    const { database } = await connectToMongoDB();
     await database.dropCollection('normalize');
     await database.createCollection('normalize');
 
+    // Sort normalizedDocuments by 'tanggaljam' in ascending order (oldest first)
+    normalizedDocuments.sort((a, b) => a.tanggaljam - b.tanggaljam);
+
     const normalizeCollection = database.collection('normalize');
-    await normalizeCollection.insertMany(normalizedData);
+    await normalizeCollection.insertMany(normalizedDocuments);
 
     console.log('Dataset telah dinormalisasi dan disimpan dalam collection normalize');
     console.log('MinMax Values:', minMax);
@@ -60,7 +103,7 @@ const normalizeAndSaveData = async () => {
   }
 }
 
-// Start the normalization process
+// Mulai normalisasi berdasarkan permintaan frontend
 app.post('/api/start-normalization', async (req, res) => {
   try {
     normalizeAndSaveData(); // Start normalization process
@@ -71,17 +114,6 @@ app.post('/api/start-normalization', async (req, res) => {
   }
 });
 
-
-// Mulai Normalisasi Dataset
-app.post('/api/start-normalization', async (req, res) => {
-  try {
-    normalizeAndSaveData(); // Start normalization process
-    res.json({ message: 'Normalization process started' });
-  } catch (error) {
-    console.error('Error starting data normalization:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
 
 // Cek Status koneksi mongoDB
 app.get('/api/mongoDB-status', async (req, res) => {

@@ -22,48 +22,49 @@ const columns = [
   { id: 'pH', label: 'pH', align: 'left', sortable: true },
   { id: 'kelembaban', label: 'Kelembaban', align: 'left', sortable: true },
   { id: 'kondisi', label: 'Kondisi', align: 'left', sortable: false } // No sorting for this column
-];
+]
 
 function createData(tanggaljam, suhu, pH, kelembaban, kondisi) {
-  return { tanggaljam, suhu, pH, kelembaban, kondisi };
+  return { tanggaljam, suhu, pH, kelembaban, kondisi }
 }
 
 function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
+  const stabilizedThis = array.map((el, index) => [el, index])
   stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) return order;
+    const order = comparator(a[0], b[0])
+    if (order !== 0) return order
 
-    return a[1] - b[1];
+    return a[1] - b[1]
   });
 
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map((el) => el[0])
 }
 
 function getComparator(order, orderBy) {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
+    : (a, b) => -descendingComparator(a, b, orderBy)
 }
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
-    return -1;
+    return -1
   }
   if (b[orderBy] > a[orderBy]) {
-    return 1;
+    return 1
   }
 
-  return 0;
+  return 0
 }
 
 const DatasetNormalisasi = () => {
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [sorting, setSorting] = useState({ column: 'tanggaljam', direction: 'asc' });
+  const [successMessage, setSuccessMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [data, setData] = useState([])
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [sorting, setSorting] = useState({ column: 'tanggaljam', direction: 'asc' })
+  const [lastNormalizationTime, setLastNormalizationTime] = useState('');
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -81,6 +82,10 @@ const DatasetNormalisasi = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Fetch the last normalization time from local storage
+      const lastTime = localStorage.getItem('lastNormalizationTime');
+      setLastNormalizationTime(lastTime || '');
+
       try {
         const response = await fetch('http://localhost:3001/api/get-normalize-data');
         if (response.ok) {
@@ -93,6 +98,7 @@ const DatasetNormalisasi = () => {
         console.error('Error:', error);
       }
     };
+
     fetchData();
   }, []);
 
@@ -105,6 +111,22 @@ const DatasetNormalisasi = () => {
         // Normalization process started successfully
         console.log('Normalization process started.');
 
+        const currentTime = new Date();
+
+        const formattedTime = currentTime.toLocaleString('en-GB', {
+          day: 'numeric',
+          month: 'numeric',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+
+        setLastNormalizationTime(formattedTime);
+
+        // Store lastNormalizationTime in local storage
+        localStorage.setItem('lastNormalizationTime', formattedTime);
+
         // Reload the page to get the latest data
         window.location.reload();
       } else {
@@ -113,7 +135,7 @@ const DatasetNormalisasi = () => {
     } catch (error) {
       console.error('Error starting normalization process:', error);
     }
-  };
+  }
 
   const rows = data.map((row) => createData(row.tanggaljam, row.suhu, row.pH, row.kelembaban, row.kondisi));
   const sortedData = stableSort(rows, getComparator(sorting.direction, sorting.column));
@@ -132,6 +154,7 @@ const DatasetNormalisasi = () => {
           >
             Mulai Normalisasi
           </Button>
+          <p>Normalisasi terakhir: {lastNormalizationTime}</p>
         </CardContent>
       </Card>
       <br></br>
