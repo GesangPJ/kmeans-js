@@ -1,10 +1,11 @@
-// Dummy Data Generator to MongoDB Collection Sensor_Data
-// Data generator untuk membuat data dan memasukkan kedalam MongoDB
+// JS Dummy data Generator
+// Generate data ke MongoDB
+
 const fs = require('fs');
 const { connectToMongoDB } = require('./mongoDB');
 const { DateTime } = require('luxon');
 
-// Menggunakan dynamic import untuk 'random' module
+// Gunakan dynamic import untuk module random
 import('random').then(async (randomModule) => {
   const random = randomModule.default;
 
@@ -12,18 +13,12 @@ import('random').then(async (randomModule) => {
   function random_datetime(start_date, end_date) {
     const randomSeconds = random.int(0, Math.floor((end_date - start_date) / 1000));
 
-    return start_date.plus({ seconds: randomSeconds });
+    return start_date.plus({ seconds: randomSeconds })
   }
 
-  // Fungsi generate data keseluruhan
+  // Function to generate random data based on your criteria
   function generate_data() {
-    // Menggunakan waktu UTC untuk generate tanggaljam
-    const currentDatetimeUTC = DateTime.utc();
-
-    // Menggunakan UTC+7 (Jakarta)
-    const tanggaljam = currentDatetimeUTC.plus({ hours: 7 });
-
-    // Generate data lainnya
+    const tanggaljam = random_datetime(DateTime.fromISO('2023-01-01'), DateTime.fromISO('2023-12-31'))
     const suhu = random.int(15, 35);
     const pH = random.int(0, 14);
     const kelembaban = random.int(30, 80);
@@ -38,27 +33,27 @@ import('random').then(async (randomModule) => {
     };
   }
 
-  // Mulai generate data
+  // Mulai Generate data
   const data = [];
   for (let i = 0; i < 50; i++) {
-    data.push(generate_data());
+    data.push(generate_data())
   }
 
-  data.sort((a, b) => a.tanggaljam - b.tanggaljam);
+  data.sort((a, b) => a.tanggaljam - b.tanggaljam)
 
   try {
     // Koneksi ke MongoDB
-    const { database } = await connectToMongoDB();
+    const { database } = await connectToMongoDB()
 
-    // Set akses ke collection 'sensor_data'
+    // Akses koleksi 'sensor_data'
     const collection = database.collection('sensor_data');
 
-    // Hapus data yang sudah ada dalam collection dan ganti dengan yang baru
-    await collection.deleteMany({});
-    await collection.insertMany(data);
+    // Ganti data yang ada dengan data yang digenerate
+    await collection.deleteMany({})
+    await collection.insertMany(data)
 
-    console.log("Berhasil generate data ke MongoDB");
+    console.log("Data Berhasil dimasukkan ke MongoDB")
   } catch (error) {
-    console.error("Error :", error);
+    console.error("An error occurred:", error)
   }
 });
