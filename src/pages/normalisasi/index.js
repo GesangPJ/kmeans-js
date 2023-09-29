@@ -109,24 +109,33 @@ const DatasetNormalisasi = () => {
       });
       if (response.ok) {
         // Normalization process started successfully
-        console.log('Normalization process started.')
+        console.log('Normalization process started.');
 
-        const currentTime = new Date().toLocaleString()
-        setLastNormalizationTime(currentTime)
+        const currentTime = new Date();
+
+        const formattedTime = currentTime.toLocaleString('en-GB', {
+          day: 'numeric',
+          month: 'numeric',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+
+        setLastNormalizationTime(formattedTime);
 
         // Store lastNormalizationTime in local storage
-        localStorage.setItem('lastNormalizationTime', currentTime)
+        localStorage.setItem('lastNormalizationTime', formattedTime);
 
         // Reload the page to get the latest data
         window.location.reload();
-
       } else {
-        console.error('Normalization process failed.')
+        console.error('Normalization process failed.');
       }
     } catch (error) {
       console.error('Error starting normalization process:', error);
     }
-  };
+  }
 
   const rows = data.map((row) => createData(row.tanggaljam, row.suhu, row.pH, row.kelembaban, row.kondisi));
   const sortedData = stableSort(rows, getComparator(sorting.direction, sorting.column));
