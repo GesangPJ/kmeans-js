@@ -20,7 +20,7 @@ async function connectToMongoDB() {
 
     // Change the database and collection names here
     const database = client.db("kmeans-kopi");
-    const collection = database.collection("uploaded");
+    const collection = database.collection("dataset");
 
     return { database, collection };
   } catch (err) {
