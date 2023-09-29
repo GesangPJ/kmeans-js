@@ -9,6 +9,7 @@ import StackedBarChartOutlinedIcon from '@mui/icons-material/StackedBarChartOutl
 import { TuneOutlined } from '@mui/icons-material'
 import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined'
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined'
+import SensorsOutlinedIcon from '@mui/icons-material/SensorsOutlined';
 
 const navigation = () => {
   return [
@@ -16,8 +17,8 @@ const navigation = () => {
       sectionTitle: 'Dataset'
     },
     {
-      title: 'Dataset Processing',
-      icon: DocumentScannerOutlined,
+      title: 'Sensor Data',
+      icon: SensorsOutlinedIcon,
       path: '/'
     },
     {
