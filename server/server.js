@@ -15,7 +15,7 @@ app.use(cors());
 app.get('/api/mongodb-status', async (req, res) => {
   try {
     // Cek koneksi ke MongoDB pake MongoDB Driver
-    await connectToMongoDB(); // Call the correct function to check MongoDB status
+    await connectToMongoDB()(); // Call the correct function to check MongoDB status
 
     // Respon status pake JSON
     res.json({ isConnected: true });
@@ -36,8 +36,78 @@ app.listen(port, async () => {
   console.log(`Server is running on port ${port}`);
 
   // Mulai Koneksi ke MongoDB saat server start
-  await connectToMongoDB();
+  await connectToMongoDB()();
 });
+
+// Ambil Data Dari Koleksi sensor_data
+app.get('/api/get-sensordata', async (req, res) => {
+  try {
+    const db = await connectToMongoDB()()
+    const SensorDataCollection = db.collection('sensor_data')
+    const data = await SensorDataCollection.find({}).toArray()
+    res.json(data)
+  }
+  catch (error) {
+    console.error('Error Mengambil Data dari Sensor Data : ', error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+// Ambil Data Dari Koleksi Dataset
+app.get('/api/get-dataset', async (req, res) => {
+  try {
+    const db = await connectToMongoDB()
+    const SensorDataCollection = db.collection('dataset')
+    const data = await SensorDataCollection.find({}).toArray()
+    res.json(data)
+  }
+  catch (error) {
+    console.error('Error Mengambil Data dari Dataset : ', error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+// Ambil Data Dari Koleksi Normalize
+app.get('/api/get-normalize-data', async (req, res) => {
+  try {
+    const db = await connectToMongoDB()
+    const SensorDataCollection = db.collection('normalize')
+    const data = await SensorDataCollection.find({}).toArray()
+    res.json(data)
+  }
+  catch (error) {
+    console.error('Error Mengambil Data dari Dataset Normalisasi : ', error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+// Ambil Data Dari Koleksi K-Means Result (Hasil K-Means)
+app.get('/api/get-kmeans-result', async (req, res) => {
+  try {
+    const db = await connectToMongoDB()
+    const SensorDataCollection = db.collection('kmeans_result')
+    const data = await SensorDataCollection.find({}).toArray()
+    res.json(data)
+  }
+  catch (error) {
+    console.error('Error Mengambil Data dari K-Means Result : ', error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
+
+// Ambil Data Dari Koleksi Elbow Method
+app.get('/api/get-elbowmethod', async (req, res) => {
+  try {
+    const db = await connectToMongoDB()
+    const SensorDataCollection = db.collection('elbow_method')
+    const data = await SensorDataCollection.find({}).toArray()
+    res.json(data)
+  }
+  catch (error) {
+    console.error('Error Mengambil Data dari Elbow Method : ', error)
+    res.status(500).json({ error: 'Internal Server Error' })
+  }
+})
 
 // Parsing CSV file agar lebih mudah upload jadi JSON ke MongoDB
 function parseCSV(csvString) {
@@ -75,8 +145,8 @@ app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
 
     const csvData = req.file.buffer.toString();
 
-    // Use the connectToMongoDB function to establish a connection
-    const { database, collection } = await connectToMongoDB();
+    // Use the connectToMongoDB() function to establish a connection
+    const { database, collection } = await connectToMongoDB()();
 
     // Clear the existing data and insert new data
     await collection.deleteMany({});
