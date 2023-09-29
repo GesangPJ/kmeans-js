@@ -12,39 +12,47 @@ const upload = multer({ storage })
 app.use(express.json())
 app.use(cors())
 
-// Dataset Normalization
-const normalizeData = (data) => {
-  const minMax = {}
-
+// Method Normalisasi Dataset
+const normalizeData = (data, minMax) => {
   const normalizedData = data.map((record) => {
-    if (!minMax.tanggaljam) {
-      minMax.tanggaljam = { min: record.tanggaljam, max: record.tanggaljam };
-    } else {
-      if (record.tanggaljam < minMax.tanggaljam.min) {
-        minMax.tanggaljam.min = record.tanggaljam;
-      }
-      if (record.tanggaljam > minMax.tanggaljam.max) {
-        minMax.tanggaljam.max = record.tanggaljam;
-      }
-    }
-
     return {
       tanggaljam: record.tanggaljam,
-      suhu: (record.suhu - 15) / (35 - 15),
-      pH: record.pH / 14,
-      kelembaban: (record.kelembaban - 30) / (80 - 30),
-      kondisi: (record.kondisi - 1) / (3 - 1),
+      suhu: (record.suhu - minMax.suhu.min) / (minMax.suhu.max - minMax.suhu.min),
+      pH: (record.pH - minMax.pH.min) / (minMax.pH.max - minMax.pH.min),
+      kelembaban: (record.kelembaban - minMax.kelembaban.min) / (minMax.kelembaban.max - minMax.kelembaban.min),
+      kondisi: (record.kondisi - minMax.kondisi.min) / (minMax.kondisi.max - minMax.kondisi.min),
     };
   });
 
-  return { normalizedData, minMax };
+  return normalizedData;
 }
 
 const normalizeAndSaveData = async () => {
   try {
     const { collection, database } = await connectToMongoDB();
     const sensorData = await collection.find().toArray();
-    const { normalizedData, minMax } = normalizeData(sensorData);
+
+    // Calculate minMax values dynamically
+    const minMax = {
+      suhu: {
+        min: Math.min(...sensorData.map((record) => record.suhu)),
+        max: Math.max(...sensorData.map((record) => record.suhu)),
+      },
+      pH: {
+        min: Math.min(...sensorData.map((record) => record.pH)),
+        max: Math.max(...sensorData.map((record) => record.pH)),
+      },
+      kelembaban: {
+        min: Math.min(...sensorData.map((record) => record.kelembaban)),
+        max: Math.max(...sensorData.map((record) => record.kelembaban)),
+      },
+      kondisi: {
+        min: Math.min(...sensorData.map((record) => record.kondisi)),
+        max: Math.max(...sensorData.map((record) => record.kondisi)),
+      },
+    };
+
+    const normalizedData = normalizeData(sensorData, minMax);
 
     // Drop the existing 'normalize' collection and recreate it
     await database.dropCollection('normalize');
@@ -60,7 +68,7 @@ const normalizeAndSaveData = async () => {
   }
 }
 
-// Start the normalization process
+// Mulai normalisasi berdasarkan permintaan frontend
 app.post('/api/start-normalization', async (req, res) => {
   try {
     normalizeAndSaveData(); // Start normalization process
@@ -71,17 +79,6 @@ app.post('/api/start-normalization', async (req, res) => {
   }
 });
 
-
-// Mulai Normalisasi Dataset
-app.post('/api/start-normalization', async (req, res) => {
-  try {
-    normalizeAndSaveData(); // Start normalization process
-    res.json({ message: 'Normalization process started' });
-  } catch (error) {
-    console.error('Error starting data normalization:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-});
 
 // Cek Status koneksi mongoDB
 app.get('/api/mongoDB-status', async (req, res) => {
