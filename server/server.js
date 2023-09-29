@@ -1,5 +1,5 @@
 const express = require('express');
-const { connectToMongoDB } = require('./mongoDB'); // Import the correct MongoDB connection function
+const { connectToMongoDB } = require('./mongoDB'); // Import the correct mongoDB connection function
 const cors = require('cors');
 const multer = require('multer');
 
@@ -11,16 +11,16 @@ const upload = multer({ storage });
 app.use(express.json());
 app.use(cors());
 
-// Cek Status koneksi MongoDB
-app.get('/api/mongodb-status', async (req, res) => {
+// Cek Status koneksi mongoDB
+app.get('/api/mongoDB-status', async (req, res) => {
   try {
-    // Cek koneksi ke MongoDB pake MongoDB Driver
-    await connectToMongoDB()(); // Call the correct function to check MongoDB status
+    // Cek koneksi ke mongoDB pake mongoDB Driver
+    await connectToMongoDB() // Call the correct function to check mongoDB status
 
     // Respon status pake JSON
     res.json({ isConnected: true });
   } catch (error) {
-    console.error('Error checking MongoDB status:', error);
+    console.error('Error checking mongoDB status:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
@@ -35,15 +35,15 @@ const port = process.env.PORT || 3001;
 app.listen(port, async () => {
   console.log(`Server is running on port ${port}`);
 
-  // Mulai Koneksi ke MongoDB saat server start
-  await connectToMongoDB()();
+  // Mulai Koneksi ke mongoDB saat server start
+  await connectToMongoDB();
 });
 
 // Ambil Data Dari Koleksi sensor_data
 app.get('/api/get-sensordata', async (req, res) => {
   try {
-    const db = await connectToMongoDB()()
-    const SensorDataCollection = db.collection('sensor_data')
+    const { database } = await connectToMongoDB()
+    const SensorDataCollection = database.collection('sensor_data')
     const data = await SensorDataCollection.find({}).toArray()
     res.json(data)
   }
@@ -56,8 +56,8 @@ app.get('/api/get-sensordata', async (req, res) => {
 // Ambil Data Dari Koleksi Dataset
 app.get('/api/get-dataset', async (req, res) => {
   try {
-    const db = await connectToMongoDB()
-    const SensorDataCollection = db.collection('dataset')
+    const { database } = await connectToMongoDB()
+    const SensorDataCollection = database.collection('dataset')
     const data = await SensorDataCollection.find({}).toArray()
     res.json(data)
   }
@@ -70,8 +70,8 @@ app.get('/api/get-dataset', async (req, res) => {
 // Ambil Data Dari Koleksi Normalize
 app.get('/api/get-normalize-data', async (req, res) => {
   try {
-    const db = await connectToMongoDB()
-    const SensorDataCollection = db.collection('normalize')
+    const { database } = await connectToMongoDB()
+    const SensorDataCollection = database.collection('normalize')
     const data = await SensorDataCollection.find({}).toArray()
     res.json(data)
   }
@@ -84,8 +84,8 @@ app.get('/api/get-normalize-data', async (req, res) => {
 // Ambil Data Dari Koleksi K-Means Result (Hasil K-Means)
 app.get('/api/get-kmeans-result', async (req, res) => {
   try {
-    const db = await connectToMongoDB()
-    const SensorDataCollection = db.collection('kmeans_result')
+    const { database } = await connectToMongoDB()
+    const SensorDataCollection = database.collection('kmeans_result')
     const data = await SensorDataCollection.find({}).toArray()
     res.json(data)
   }
@@ -98,8 +98,8 @@ app.get('/api/get-kmeans-result', async (req, res) => {
 // Ambil Data Dari Koleksi Elbow Method
 app.get('/api/get-elbowmethod', async (req, res) => {
   try {
-    const db = await connectToMongoDB()
-    const SensorDataCollection = db.collection('elbow_method')
+    const { database } = await connectToMongoDB()
+    const SensorDataCollection = database.collection('elbow_method')
     const data = await SensorDataCollection.find({}).toArray()
     res.json(data)
   }
@@ -109,7 +109,7 @@ app.get('/api/get-elbowmethod', async (req, res) => {
   }
 })
 
-// Parsing CSV file agar lebih mudah upload jadi JSON ke MongoDB
+// Parsing CSV file agar lebih mudah upload jadi JSON ke mongoDB
 function parseCSV(csvString) {
   const rows = csvString.split('\n');
   const headers = rows[0].split(',');
@@ -136,7 +136,7 @@ function parseCSV(csvString) {
   return data;
 }
 
-// Fungsi Upload CSV ke MongoDB "uploaded" collection
+// Fungsi Upload CSV ke mongoDB "uploaded" collection
 app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
   try {
     if (!req.file) {
@@ -145,8 +145,8 @@ app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
 
     const csvData = req.file.buffer.toString();
 
-    // Use the connectToMongoDB() function to establish a connection
-    const { database, collection } = await connectToMongoDB()();
+    // Use the connectTomongoDB() function to establish a connection
+    const { db, collection } = await connectToMongoDB();
 
     // Clear the existing data and insert new data
     await collection.deleteMany({});
