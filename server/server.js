@@ -2,7 +2,6 @@ const express = require('express');
 const { connectToMongoDB } = require('./mongoDB'); // Import the correct mongoDB connection function
 const cors = require('cors');
 const multer = require('multer');
-const { spawn } = require('child_process');
 
 const app = express()
 const storage = multer.memoryStorage()
@@ -30,7 +29,7 @@ const normalizeData = (data, minMax) => {
 const normalizeAndSaveData = async () => {
   try {
     const { collection, database } = await connectToMongoDB();
-    const sensorData = await collection.find().toArray();
+    const sensorData = await collection.find().readPreference('primary').toArray()
 
     // Calculate minMax values dynamically
     const minMax = {

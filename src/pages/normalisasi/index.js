@@ -82,13 +82,17 @@ const DatasetNormalisasi = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      // Fetch the last normalization time from local storage
+      const lastTime = localStorage.getItem('lastNormalizationTime');
+      setLastNormalizationTime(lastTime || '');
+
       try {
         const response = await fetch('http://localhost:3001/api/get-normalize-data');
         if (response.ok) {
           const result = await response.json();
           setData(result);
         } else {
-          console.error('Error fetching data from Sensor Data');
+          console.error('Error Mendapatkan Data Dari Sensor Data');
         }
       } catch (error) {
         console.error('Error:', error);
@@ -140,12 +144,8 @@ const DatasetNormalisasi = () => {
             onClick={handleNormalizationClick}
           >
             Mulai Normalisasi
-          </Button><br></br>
-          {lastNormalizationTime && (
-            <div>
-              Normalisasi terakhir: {lastNormalizationTime}
-            </div>
-          )}
+          </Button>
+          <p>Normalisasi terakhir: {lastNormalizationTime}</p>
         </CardContent>
       </Card>
       <br></br>
