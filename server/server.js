@@ -2,14 +2,86 @@ const express = require('express');
 const { connectToMongoDB } = require('./mongoDB'); // Import the correct mongoDB connection function
 const cors = require('cors');
 const multer = require('multer');
+const { spawn } = require('child_process');
 
-const app = express();
-const storage = multer.memoryStorage();
-const upload = multer({ storage });
+const app = express()
+const storage = multer.memoryStorage()
+const upload = multer({ storage })
 
 // Express JS
-app.use(express.json());
-app.use(cors());
+app.use(express.json())
+app.use(cors())
+
+// Dataset Normalization
+const normalizeData = (data) => {
+  const minMax = {}
+
+  const normalizedData = data.map((record) => {
+    if (!minMax.tanggaljam) {
+      minMax.tanggaljam = { min: record.tanggaljam, max: record.tanggaljam };
+    } else {
+      if (record.tanggaljam < minMax.tanggaljam.min) {
+        minMax.tanggaljam.min = record.tanggaljam;
+      }
+      if (record.tanggaljam > minMax.tanggaljam.max) {
+        minMax.tanggaljam.max = record.tanggaljam;
+      }
+    }
+
+    return {
+      tanggaljam: record.tanggaljam,
+      suhu: (record.suhu - 15) / (35 - 15),
+      pH: record.pH / 14,
+      kelembaban: (record.kelembaban - 30) / (80 - 30),
+      kondisi: (record.kondisi - 1) / (3 - 1),
+    };
+  });
+
+  return { normalizedData, minMax };
+}
+
+const normalizeAndSaveData = async () => {
+  try {
+    const { collection, database } = await connectToMongoDB();
+    const sensorData = await collection.find().toArray();
+    const { normalizedData, minMax } = normalizeData(sensorData);
+
+    // Drop the existing 'normalize' collection and recreate it
+    await database.dropCollection('normalize');
+    await database.createCollection('normalize');
+
+    const normalizeCollection = database.collection('normalize');
+    await normalizeCollection.insertMany(normalizedData);
+
+    console.log('Dataset telah dinormalisasi dan disimpan dalam collection normalize');
+    console.log('MinMax Values:', minMax);
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+}
+
+// Start the normalization process
+app.post('/api/start-normalization', async (req, res) => {
+  try {
+    normalizeAndSaveData(); // Start normalization process
+    res.json({ message: 'Normalization process started' });
+  } catch (error) {
+    console.error('Error starting data normalization:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+// Mulai Normalisasi Dataset
+app.post('/api/start-normalization', async (req, res) => {
+  try {
+    normalizeAndSaveData(); // Start normalization process
+    res.json({ message: 'Normalization process started' });
+  } catch (error) {
+    console.error('Error starting data normalization:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 // Cek Status koneksi mongoDB
 app.get('/api/mongoDB-status', async (req, res) => {
