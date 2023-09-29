@@ -40,13 +40,13 @@ const normalizeData = (data) => {
   });
 
   return { normalizedData, minMax };
-};
+}
 
 
 const normalizeAndSaveData = async () => {
   try {
     const { collection, database } = await connectToMongoDB();
-    const sensorData = await collection.find().readPreference('primary').toArray()
+    const sensorData = await collection.find().toArray();
 
     // Calculate minMax values dynamically
     const minMax = {
