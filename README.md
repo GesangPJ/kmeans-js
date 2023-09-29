@@ -15,3 +15,11 @@ Dashboard menampilkan data dari sensor secara realtime (jika server terus runnin
 
 <img src="https://github.com/GesangPJ/kmeans-js/blob/main/data/img/normalisasi.jpg" width = "600" height = "300" >
 Normalisasi Dataset menggunakan data dari sensor, klik tombol Mulai Normalisasi untuk memulai operasi normalisasi menggunakan data terbaru
+
+#### Main Node Modules
+
+- React
+- NextJS
+- ExpressJS
+- MUI/Core
+- MUI/Icon
