@@ -17,17 +17,17 @@ const navigation = () => {
       sectionTitle: 'Dataset'
     },
     {
-      title: 'Sensor Data',
+      title: 'Data Sensor',
       icon: SensorsOutlinedIcon,
       path: '/'
     },
     {
-      title: 'Dataset Normalization',
+      title: 'Normalisasi Dataset',
       icon: DeveloperBoardOutlinedIcon,
-      path: '/obat-herbal'
+      path: '/normalisasi'
     },
     {
-      title: 'Elbow Method',
+      title: 'Metode Elbow',
       icon: StackedBarChartOutlinedIcon,
       path: '/obat-herbal'
     },
@@ -35,17 +35,17 @@ const navigation = () => {
       sectionTitle: 'K-Means'
     },
     {
-      title: 'Centroid Type',
+      title: 'Tipe Centroid',
       icon: TuneOutlined,
       path: '/obat-herbal'
     },
     {
-      title: 'K-Means Calculation',
+      title: 'Kalkulasi K-Means',
       icon: InsightsOutlinedIcon,
       path: '/obat-herbal'
     },
     {
-      title: 'K-Means Result',
+      title: 'Hasil K-Means',
       icon: AssignmentOutlinedIcon,
       path: '/obat-herbal'
     },
