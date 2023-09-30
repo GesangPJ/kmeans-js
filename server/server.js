@@ -3,8 +3,6 @@ const { connectToMongoDB } = require('./mongoDB')
 const cors = require('cors')
 const fetch = require('node-fetch')
 const multer = require('multer')
-
-const { calculateKMeans, calculateMeanCentroid, generateRandomCentroid } = require('./kmeansprocess')
 const { normalizeData } = require('./dataset_normalization')
 
 const app = express()
@@ -14,22 +12,6 @@ const upload = multer({ storage })
 // Express JS
 app.use(express.json())
 app.use(cors())
-
-const fetchNormalizedData = async () => {
-  try {
-    const response = await fetch('http://localhost:3001/api/get-normalize-data');
-    if (!response.ok) {
-      throw new Error('Failed to fetch normalized data from the API');
-    }
-
-    const normalizedData = await response.json();
-
-    return normalizedData;
-  } catch (error) {
-    console.error('Error fetching normalized data:', error);
-    throw error;
-  }
-}
 
 // Api Normalisasi Dan Simpan Data
 const normalizeAndSaveData = async () => {
@@ -91,53 +73,33 @@ const normalizeAndSaveData = async () => {
   }
 };
 
-// Kirim Parameter K-Means
+// Kirim Parameter K-Means ke MongoDB
 app.post('/api/post-parameter', async (req, res) => {
+
+  // Get the parameter values from the request body.
+  const { jumlahCluster, perulangan, centroidType } = req.body
   try {
-    // Get the parameters from the request body
-    const { JumlahCluster, perulangan, centroidType } = req.body
-
-    // Fetch normalized data from /api/get-normalize-data
-    const normalizedData = await fetchNormalizedData()
-    const maxCluster = parseInt(JumlahCluster)
-    const maxLoop = parseInt(perulangan)
-
-    // Define a variable to hold the centroid data
-    let centroid = null;
-
-    // Check the selected centroid type and set the centroid data accordingly
-    if (centroidType === 'mean') {
-      // Calculate centroid based on mean values
-      centroid = calculateMeanCentroid(normalizedData, maxCluster)
-    } else if (centroidType === 'random') {
-      // Generate random centroid values
-      centroid = generateRandomCentroid(normalizedData, maxCluster)
-    } else {
-      throw new Error('Invalid centroid type selected');
-    }
-
-    // Call the K-Means calculation method with the normalized data and centroid
-    const kMeansResults = calculateKMeans(normalizedData, maxCluster, maxLoop, centroid)
-
-    // Save the K-Means results to a MongoDB collection
     const { database } = await connectToMongoDB()
-    const kMeansResultCollection = database.collection('kmeans_result')
 
-    const kMeansResultData = {
-      JumlahCluster: maxCluster,
-      Perulangan: maxLoop,
-      Result: kMeansResults,
-      Timestamp: new Date(),
-    };
+    // Drop the existing collection, if any.
+    await database.dropCollection('parameter')
 
-    await kMeansResultCollection.replaceOne({}, kMeansResultData, { upsert: true })
+    // Create a new collection for the parameter.
+    await database.createCollection('parameter')
 
-    res.json({ message: 'K-Means with elbow optimization completed and results saved.' })
-  } catch (error) {
-    console.error('Error in K-Means with Elbow Optimization:', error)
-    res.status(500).json({ error: 'Internal Server Error' })
+    const ParameterCollection = database.collection('parameter')
+
+    await ParameterCollection.insertOne({ jumlahCluster, perulangan, centroidType })
+
+    res.status(201).json({ message: 'Parameter berhasil ditambahkan' });
+
   }
-});
+  catch (error) {
+    console.error('Error mengirim parameter : ', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+
+  }
+})
 
 // Mulai normalisasi berdasarkan permintaan frontend
 app.post('/api/start-normalization', async (req, res) => {
