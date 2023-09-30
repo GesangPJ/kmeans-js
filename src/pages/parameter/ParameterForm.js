@@ -63,8 +63,8 @@ const InputParameterForm = () => {
       return;
     }
 
-    const ElbowInput = {
-      JumlahCluster,
+    const ParameterInput = {
+      jumlahCluster: JumlahCluster, // Correct variable name
       perulangan,
       centroidType, // Include the selected centroid type
     };
@@ -75,14 +75,14 @@ const InputParameterForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(ElbowInput),
-      });
+        body: JSON.stringify(ParameterInput),
+      })
 
       if (response.ok) {
-        setSuccessMessage(`Parameter Berhasil Dikirim`);
-        setJumlahCluster('');
-        setperulangan('');
-        setCentroid(''); // Reset the centroid type selection
+        setSuccessMessage(`Parameter Berhasil Dikirim`)
+        setJumlahCluster('')
+        setperulangan('')
+        setCentroid('')
         setTimeout(() => {
           setSuccessMessage('');
         }, 5000);
@@ -139,13 +139,22 @@ const InputParameterForm = () => {
                   id="centroid-type"
                   value={centroidType}
                   label="Tipe Centroid"
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const selectedValue = e.target.value;
+                    if (selectedValue === 'mean') {
+                      setCentroid('mean');
+                    } else if (selectedValue === 'random') {
+                      setCentroid('random');
+                    } else {
+                      // Handle other cases if needed
+                    }
+                  }}
                 >
                   <MenuItem value="">
                     <em>-</em>
                   </MenuItem>
-                  <MenuItem value={'mean'}>Rata-Rata Nilai</MenuItem>
-                  <MenuItem value={'random'}>Acak</MenuItem>
+                  <MenuItem value="mean">Rata-Rata Nilai</MenuItem>
+                  <MenuItem value="random">Acak</MenuItem>
                 </Select>
                 <FormHelperText>Pilih tipe Centroid</FormHelperText>
               </FormControl>
