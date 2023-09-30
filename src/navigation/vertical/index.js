@@ -9,7 +9,8 @@ import StackedBarChartOutlinedIcon from '@mui/icons-material/StackedBarChartOutl
 import { TuneOutlined } from '@mui/icons-material'
 import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined'
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined'
-import SensorsOutlinedIcon from '@mui/icons-material/SensorsOutlined';
+import SensorsOutlinedIcon from '@mui/icons-material/SensorsOutlined'
+import SettingsSuggestOutlinedIcon from '@mui/icons-material/SettingsSuggestOutlined'
 
 const navigation = () => {
   return [
@@ -33,6 +34,11 @@ const navigation = () => {
     },
     {
       sectionTitle: 'K-Means'
+    },
+    {
+      title: 'Optimasi Elbow',
+      icon: SettingsSuggestOutlinedIcon,
+      path: '/optimasi-elbow'
     },
     {
       title: 'Kalkulasi K-Means',
