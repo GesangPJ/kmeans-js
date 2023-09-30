@@ -1,5 +1,6 @@
 const fetch = require('node-fetch') // Import the 'node-fetch' library to make HTTP requests
 const { connectToMongoDB } = require('./mongoDB') // Import your MongoDB connection code
+const KMeans = require('./kmeans_process')
 
 // Function to fetch normalized data from the API
 async function fetchNormalizedData() {
@@ -18,7 +19,21 @@ async function fetchNormalizedData() {
 async function performElbowMethod(JumlahCluster, perulangan) {
   try {
     // Fetch normalized data
-    const normalizedData = await fetchNormalizedData()
+    const normalizedData = await fetchNormalizedData();
+
+    // Perform elbow method calculations using 'normalizedData'
+    const maxCluster = parseInt(JumlahCluster);
+    const maxLoop = parseInt(perulangan);
+    const centroid = null; // You can provide centroid data if needed
+
+    // Create an instance of KMeans and execute clustering
+    const kmeans = new KMeans(normalizedData, maxCluster, 'mean', maxLoop, centroid);
+    kmeans.execute();
+
+    // Get the process data
+    const output = kmeans.getProcess();
+    const clusterAcuan = output.cluster[output.cluster.length - 1];
+    const centroidAcuan = output.centroid[output.centroid.length - 1];
 
     // Perform elbow method calculations using 'normalizedData'
 
