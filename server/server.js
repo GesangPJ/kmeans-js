@@ -4,7 +4,7 @@ const cors = require('cors')
 const fetch = require('node-fetch')
 const multer = require('multer')
 
-const { calculateKMeans } = require('./kmeansprocess')
+const { calculateKMeans, calculateMeanCentroid, generateRandomCentroid } = require('./kmeansprocess')
 const { normalizeData } = require('./dataset_normalization')
 
 const app = express()
@@ -14,6 +14,22 @@ const upload = multer({ storage })
 // Express JS
 app.use(express.json())
 app.use(cors())
+
+const fetchNormalizedData = async () => {
+  try {
+    const response = await fetch('http://localhost:3001/api/get-normalize-data');
+    if (!response.ok) {
+      throw new Error('Failed to fetch normalized data from the API');
+    }
+
+    const normalizedData = await response.json();
+
+    return normalizedData;
+  } catch (error) {
+    console.error('Error fetching normalized data:', error);
+    throw error;
+  }
+}
 
 // Api Normalisasi Dan Simpan Data
 const normalizeAndSaveData = async () => {
@@ -44,9 +60,9 @@ const normalizeAndSaveData = async () => {
         min: Math.min(...sensorData.map((record) => record.kondisi)),
         max: Math.max(...sensorData.map((record) => record.kondisi)),
       },
-    };
+    }
 
-    const { normalizedData } = normalizeData(sensorData, minMax);
+    const { normalizedData } = normalizeData(sensorData, minMax)
 
     // Convert normalizedData to an array of documents
     const normalizedDocuments = normalizedData.map((record) => ({
@@ -58,9 +74,9 @@ const normalizeAndSaveData = async () => {
     }))
 
     // Drop the existing 'normalize' collection and recreate it
-    const { database } = await connectToMongoDB();
-    await database.dropCollection('normalize');
-    await database.createCollection('normalize');
+    const { database } = await connectToMongoDB()
+    await database.dropCollection('normalize')
+    await database.createCollection('normalize')
 
     // Sort normalizedDocuments by 'tanggaljam' in ascending order (oldest first)
     normalizedDocuments.sort((a, b) => a.tanggaljam - b.tanggaljam)
@@ -73,7 +89,7 @@ const normalizeAndSaveData = async () => {
   } catch (error) {
     console.error('An error occurred:', error)
   }
-}
+};
 
 // Kirim Parameter K-Means
 app.post('/api/post-parameter', async (req, res) => {
@@ -81,7 +97,7 @@ app.post('/api/post-parameter', async (req, res) => {
     // Get the parameters from the request body
     const { JumlahCluster, perulangan, centroidType } = req.body
 
-    // Fetch normalized data from /api/get-normalize
+    // Fetch normalized data from /api/get-normalize-data
     const normalizedData = await fetchNormalizedData()
     const maxCluster = parseInt(JumlahCluster)
     const maxLoop = parseInt(perulangan)
@@ -91,13 +107,13 @@ app.post('/api/post-parameter', async (req, res) => {
 
     // Check the selected centroid type and set the centroid data accordingly
     if (centroidType === 'mean') {
-      // Calculate centroid based on mean values here (modify as needed)
+      // Calculate centroid based on mean values
       centroid = calculateMeanCentroid(normalizedData, maxCluster)
     } else if (centroidType === 'random') {
-      // Generate random centroid values here (modify as needed)
+      // Generate random centroid values
       centroid = generateRandomCentroid(normalizedData, maxCluster)
     } else {
-      throw new Error('Invalid centroid type selected')
+      throw new Error('Invalid centroid type selected');
     }
 
     // Call the K-Means calculation method with the normalized data and centroid
@@ -112,20 +128,16 @@ app.post('/api/post-parameter', async (req, res) => {
       Perulangan: maxLoop,
       Result: kMeansResults,
       Timestamp: new Date(),
-    }
+    };
 
-    await kMeansResultCollection.updateOne(
-      {},
-      { $set: kMeansResultData },
-      { upsert: true }
-    )
+    await kMeansResultCollection.replaceOne({}, kMeansResultData, { upsert: true })
 
     res.json({ message: 'K-Means with elbow optimization completed and results saved.' })
   } catch (error) {
     console.error('Error in K-Means with Elbow Optimization:', error)
     res.status(500).json({ error: 'Internal Server Error' })
   }
-})
+});
 
 // Mulai normalisasi berdasarkan permintaan frontend
 app.post('/api/start-normalization', async (req, res) => {
@@ -137,7 +149,6 @@ app.post('/api/start-normalization', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' })
   }
 })
-
 
 // Cek Status koneksi mongoDB
 app.get('/api/mongoDB-status', async (req, res) => {
@@ -219,20 +230,6 @@ app.get('/api/get-kmeans-result', async (req, res) => {
   }
   catch (error) {
     console.error('Error Mengambil Data dari K-Means Result : ', error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-})
-
-// Ambil Data Dari Koleksi Elbow Method
-app.get('/api/get-elbowmethod', async (req, res) => {
-  try {
-    const { database } = await connectToMongoDB()
-    const SensorDataCollection = database.collection('elbow_method')
-    const data = await SensorDataCollection.find({}).toArray()
-    res.json(data)
-  }
-  catch (error) {
-    console.error('Error Mengambil Data dari Elbow Method : ', error)
     res.status(500).json({ error: 'Internal Server Error' })
   }
 })
