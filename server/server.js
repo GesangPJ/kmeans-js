@@ -1,8 +1,9 @@
 const express = require('express')
 const { connectToMongoDB } = require('./mongoDB')
 const cors = require('cors')
-const multer = require('multer')
 const fetch = require('node-fetch')
+const multer = require('multer')
+const { normalizeData } = require('./dataset_normalization')
 
 const app = express()
 const storage = multer.memoryStorage()
@@ -12,47 +13,16 @@ const upload = multer({ storage })
 app.use(express.json())
 app.use(cors())
 
-// Method Normalisasi Dataset
-const normalizeData = (data) => {
-  const minMax = {};
-
-  // Sort the data based on tanggaljam in ascending order to get the oldest data first
-  data.sort((a, b) => new Date(a.tanggaljam) - new Date(b.tanggaljam));
-
-  const normalizedData = data.map((record) => {
-    if (!minMax.tanggaljam) {
-      minMax.tanggaljam = { min: record.tanggaljam, max: record.tanggaljam };
-    } else {
-      if (record.tanggaljam < minMax.tanggaljam.min) {
-        minMax.tanggaljam.min = record.tanggaljam;
-      }
-      if (record.tanggaljam > minMax.tanggaljam.max) {
-        minMax.tanggaljam.max = record.tanggaljam;
-      }
-    }
-
-    return {
-      tanggaljam: record.tanggaljam,
-      suhu: (record.suhu - 15) / (35 - 15),
-      pH: record.pH / 14,
-      kelembaban: (record.kelembaban - 30) / (80 - 30),
-      kondisi: (record.kondisi - 1) / (3 - 1),
-    };
-  });
-
-  return { normalizedData, minMax };
-}
-
-
+// Api Normalisasi Dan Simpan Data
 const normalizeAndSaveData = async () => {
   try {
     // Make an HTTP GET request to fetch sensor data from the API route
-    const response = await fetch('http://localhost:3001/api/get-sensordata');
+    const response = await fetch('http://localhost:3001/api/get-sensordata')
     if (!response.ok) {
-      throw new Error('Failed to fetch sensor data from the API');
+      throw new Error('Failed to fetch sensor data from the API')
     }
 
-    const sensorData = await response.json();
+    const sensorData = await response.json()
 
     // Calculate minMax values dynamically
     const minMax = {
@@ -72,9 +42,9 @@ const normalizeAndSaveData = async () => {
         min: Math.min(...sensorData.map((record) => record.kondisi)),
         max: Math.max(...sensorData.map((record) => record.kondisi)),
       },
-    };
+    }
 
-    const { normalizedData } = normalizeData(sensorData, minMax);
+    const { normalizedData } = normalizeData(sensorData, minMax)
 
     // Convert normalizedData to an array of documents
     const normalizedDocuments = normalizedData.map((record) => ({
@@ -83,37 +53,64 @@ const normalizeAndSaveData = async () => {
       pH: record.pH,
       kelembaban: record.kelembaban,
       kondisi: record.kondisi,
-    }));
+    }))
 
     // Drop the existing 'normalize' collection and recreate it
-    const { database } = await connectToMongoDB();
-    await database.dropCollection('normalize');
-    await database.createCollection('normalize');
+    const { database } = await connectToMongoDB()
+    await database.dropCollection('normalize')
+    await database.createCollection('normalize')
 
     // Sort normalizedDocuments by 'tanggaljam' in ascending order (oldest first)
-    normalizedDocuments.sort((a, b) => a.tanggaljam - b.tanggaljam);
+    normalizedDocuments.sort((a, b) => a.tanggaljam - b.tanggaljam)
 
-    const normalizeCollection = database.collection('normalize');
-    await normalizeCollection.insertMany(normalizedDocuments);
+    const normalizeCollection = database.collection('normalize')
+    await normalizeCollection.insertMany(normalizedDocuments)
 
-    console.log('Dataset telah dinormalisasi dan disimpan dalam collection normalize');
-    console.log('MinMax Values:', minMax);
+    console.log('Dataset telah dinormalisasi dan disimpan dalam collection normalize')
+    console.log('MinMax Values:', minMax)
   } catch (error) {
-    console.error('An error occurred:', error);
+    console.error('An error occurred:', error)
   }
-}
+};
+
+// Kirim Parameter K-Means ke MongoDB
+app.post('/api/post-parameter', async (req, res) => {
+
+  // Get the parameter values from the request body.
+  const { jumlahCluster, perulangan, centroidType } = req.body
+  try {
+    const { database } = await connectToMongoDB()
+
+    // Drop the existing collection, if any.
+    await database.dropCollection('parameter')
+
+    // Create a new collection for the parameter.
+    await database.createCollection('parameter')
+
+    const ParameterCollection = database.collection('parameter')
+
+    await ParameterCollection.insertOne({ jumlahCluster, perulangan, centroidType })
+
+    res.status(201).json({ message: 'Parameter berhasil ditambahkan' });
+
+  }
+  catch (error) {
+    console.error('Error mengirim parameter : ', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+
+  }
+})
 
 // Mulai normalisasi berdasarkan permintaan frontend
 app.post('/api/start-normalization', async (req, res) => {
   try {
     normalizeAndSaveData(); // Start normalization process
-    res.json({ message: 'Normalization process started' });
+    res.json({ message: 'Normalization process started' })
   } catch (error) {
-    console.error('Error starting data normalization:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error starting data normalization:', error)
+    res.status(500).json({ error: 'Internal Server Error' })
   }
-});
-
+})
 
 // Cek Status koneksi mongoDB
 app.get('/api/mongoDB-status', async (req, res) => {
@@ -122,26 +119,26 @@ app.get('/api/mongoDB-status', async (req, res) => {
     await connectToMongoDB() // Call the correct function to check mongoDB status
 
     // Respon status pake JSON
-    res.json({ isConnected: true });
+    res.json({ isConnected: true })
   } catch (error) {
-    console.error('Error checking mongoDB status:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error('Error checking mongoDB status:', error)
+    res.status(500).json({ error: 'Internal Server Error' })
   }
-});
+})
 
 // Kirim status server
 app.get('/api/server-status', (req, res) => {
   res.json({ status: 'Online' });
-});
+})
 
 // Set Port buat server
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3001
 app.listen(port, async () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on port ${port}`)
 
   // Mulai Koneksi ke mongoDB saat server start
-  await connectToMongoDB();
-});
+  await connectToMongoDB()
+})
 
 // Ambil Data Dari Koleksi sensor_data
 app.get('/api/get-sensordata', async (req, res) => {
@@ -199,20 +196,6 @@ app.get('/api/get-kmeans-result', async (req, res) => {
   }
 })
 
-// Ambil Data Dari Koleksi Elbow Method
-app.get('/api/get-elbowmethod', async (req, res) => {
-  try {
-    const { database } = await connectToMongoDB()
-    const SensorDataCollection = database.collection('elbow_method')
-    const data = await SensorDataCollection.find({}).toArray()
-    res.json(data)
-  }
-  catch (error) {
-    console.error('Error Mengambil Data dari Elbow Method : ', error)
-    res.status(500).json({ error: 'Internal Server Error' })
-  }
-})
-
 // Parsing CSV file agar lebih mudah upload jadi JSON ke mongoDB
 function parseCSV(csvString) {
   const rows = csvString.split('\n');
@@ -261,6 +244,6 @@ app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
     console.error('Error uploading CSV:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
+})
 
 

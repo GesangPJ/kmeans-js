@@ -9,7 +9,8 @@ import StackedBarChartOutlinedIcon from '@mui/icons-material/StackedBarChartOutl
 import { TuneOutlined } from '@mui/icons-material'
 import InsightsOutlinedIcon from '@mui/icons-material/InsightsOutlined'
 import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined'
-import SensorsOutlinedIcon from '@mui/icons-material/SensorsOutlined';
+import SensorsOutlinedIcon from '@mui/icons-material/SensorsOutlined'
+import SettingsSuggestOutlinedIcon from '@mui/icons-material/SettingsSuggestOutlined'
 
 const navigation = () => {
   return [
@@ -27,17 +28,17 @@ const navigation = () => {
       path: '/normalisasi'
     },
     {
-      title: 'Metode Elbow',
-      icon: StackedBarChartOutlinedIcon,
-      path: '/obat-herbal'
+      title: 'Parameter',
+      icon: TuneOutlined,
+      path: '/parameter'
     },
     {
       sectionTitle: 'K-Means'
     },
     {
-      title: 'Tipe Centroid',
-      icon: TuneOutlined,
-      path: '/obat-herbal'
+      title: 'Optimasi Elbow',
+      icon: SettingsSuggestOutlinedIcon,
+      path: '/optimasi-elbow'
     },
     {
       title: 'Kalkulasi K-Means',
