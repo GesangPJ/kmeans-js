@@ -16,6 +16,7 @@
     "kmeans-node": "^0.1.0",
     "luxon": "^3.4.3",
     "mathjs": "^11.11.1",
+    "ml-kmeans": "^6.0.0",
     "mongodb": "^6.1.0",
     "multer": "^1.4.5-lts.1",
     "random": "^4.1.0"
