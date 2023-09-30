@@ -1,11 +1,10 @@
-const express = require('express')
-const { connectToMongoDB } = require('./mongoDB')
-const cors = require('cors')
-const multer = require('multer')
-const fetch = require('node-fetch')
-const { fetchNormalizedData, elbowOptimize } = require('./elbow_process')
-const KMeans = require('./kmeans_process')
-const { normalizeData } = require('./dataset_normalization') // Import the normalizeData function
+const express = require('express');
+const { connectToMongoDB } = require('./mongoDB');
+const cors = require('cors');
+const fetch = require('node-fetch');
+
+const { calculateKMeans } = require('./kmeansprocess'); // Import the calculateKMeans function
+const { normalizeData } = require('./dataset_normalization'); // Import the normalizeData function
 
 const app = express()
 const storage = multer.memoryStorage()
@@ -75,71 +74,54 @@ const normalizeAndSaveData = async () => {
   }
 }
 
-// Kirim Parameter Elbow Method
+// Kirim Parameter K-Means
 app.post('/api/post-parameter', async (req, res) => {
   try {
     // Get the parameters from the request body
-    const { JumlahCluster, perulangan } = req.body;
+    const { JumlahCluster, perulangan, centroidType } = req.body;
 
-    // Perform the elbow method calculation here
+    // Fetch normalized data from /api/get-normalize
     const normalizedData = await fetchNormalizedData();
     const maxCluster = parseInt(JumlahCluster);
     const maxLoop = parseInt(perulangan);
-    const centroid = null; // You can provide centroid data if needed
 
-    // Call the elbowOptimize function with the normalized data
-    const elbowResults = elbowOptimize(normalizedData, maxCluster, maxLoop, centroid);
+    // Define a variable to hold the centroid data
+    let centroid = null;
 
-    // Save the results to the MongoDB collection 'elbow_result'
+    // Check the selected centroid type and set the centroid data accordingly
+    if (centroidType === 'mean') {
+      // Calculate centroid based on mean values here (modify as needed)
+      centroid = calculateMeanCentroid(normalizedData, maxCluster);
+    } else if (centroidType === 'random') {
+      // Generate random centroid values here (modify as needed)
+      centroid = generateRandomCentroid(normalizedData, maxCluster);
+    } else {
+      throw new Error('Invalid centroid type selected');
+    }
+
+    // Call the K-Means calculation method with the normalized data and centroid
+    const kMeansResults = calculateKMeans(normalizedData, maxCluster, maxLoop, centroid);
+
+    // Save the K-Means results to a MongoDB collection
     const { database } = await connectToMongoDB();
-    const elbowResultCollection = database.collection('elbow_result');
+    const kMeansResultCollection = database.collection('kmeans_result');
 
-    const elbowResultData = {
+    const kMeansResultData = {
       JumlahCluster: maxCluster,
       Perulangan: maxLoop,
-      Result: elbowResults,
+      Result: kMeansResults,
       Timestamp: new Date(),
     };
 
-    await elbowResultCollection.updateOne(
+    await kMeansResultCollection.updateOne(
       {},
-      { $set: elbowResultData },
+      { $set: kMeansResultData },
       { upsert: true }
     );
 
-    res.json({ message: 'Elbow method completed and results saved.' });
+    res.json({ message: 'K-Means with elbow optimization completed and results saved.' });
   } catch (error) {
-    console.error('Error in Elbow Method:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
-})
-
-
-// Simpan Hasil Elbow Method
-app.post('/api/save-elbow-result', async (req, res) => {
-  try {
-    const { JumlahCluster, Perulangan, Result, Timestamp } = req.body;
-
-    // Save the elbow method result to MongoDB
-    const { database } = await connectToMongoDB();
-    const elbowResultCollection = database.collection('elbow_result');
-
-    const elbowResultData = {
-      JumlahCluster,
-      Perulangan,
-      Result,
-      Timestamp,
-    };
-
-    await elbowResultCollection.updateOne(
-      {},
-      { $set: elbowResultData },
-      { upsert: true }
-    );
-
-    res.json({ message: 'Elbow result saved successfully' });
-  } catch (error) {
-    console.error('Error saving elbow result:', error);
+    console.error('Error in K-Means with Elbow Optimization:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 })
