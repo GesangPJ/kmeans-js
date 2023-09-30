@@ -39,20 +39,15 @@ const generateRandomCentroid = (data, k) => {
 }
 
 const calculateKMeans = async (data, k, maxLoop, centroid) => {
-  const kmeans = new KMeans({
-    k,
-    maxIterations: maxLoop,
-    tolerance: 1e-4,
-    runs: 1,
-    initialCentroids: centroid,
-  })
+  const result = kmeans(data, k, { maxIterations: maxLoop, tolerance: 1e-4, runs: 1, initialCentroids: centroid });
 
-  const result = kmeans.fit(data)
+  // Connect to the MongoDB database
+  const { database } = await connectToMongoDB()
 
-  // Replace existing data or insert new data in 'kmeans_result' collection
-  const { database } = await connectToMongoDB();
+  // Get a reference to the 'kmeans_result' collection
   const kMeansResultCollection = database.collection('kmeans_result')
 
+  // Create an object to store the K-Means result along with other details
   const kMeansResultData = {
     JumlahCluster: k,
     Perulangan: maxLoop,
@@ -60,6 +55,7 @@ const calculateKMeans = async (data, k, maxLoop, centroid) => {
     Timestamp: new Date(),
   }
 
+  // Replace the existing document in 'kmeans_result' or insert a new one
   await kMeansResultCollection.replaceOne({}, kMeansResultData, { upsert: true })
 
   return result; // Return the K-Means results
