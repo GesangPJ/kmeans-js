@@ -17,9 +17,9 @@
     sparse-bitfield "^3.0.3"
 
 "@types/node@*":
-  version "20.7.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.7.1.tgz#06d732ead0bd5ad978ef0ea9cbdeb24dc8717514"
-  integrity sha512-LT+OIXpp2kj4E2S/p91BMe+VgGX2+lfO+XTpfXhh+bCk2LkQtHZSub8ewFBMGP5ClysPjTDFa4sMI8Q3n4T0wg==
+  version "20.7.2"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.7.2.tgz#0bdc211f8c2438cfadad26dc8c040a874d478aed"
+  integrity sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==
 
 "@types/webidl-conversions@*":
   version "7.0.1"
@@ -342,11 +342,6 @@ javascript-natural-sort@^0.7.1:
   resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
   integrity sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==
 
-kmeans-node@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/kmeans-node/-/kmeans-node-0.1.0.tgz#b86190a19852b412cdd69cd55f5265aa00072083"
-  integrity sha512-cztERwzkKLO/YO7hMrEOuJVYCWpYPYITCNMDKxx0b9fMurH+mmYpt0p7bt0jxT6S3oW2L5SJCw6h2ibJRDA19w==
-
 luxon@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.4.3.tgz#8ddf0358a9492267ffec6a13675fbaab5551315d"
@@ -454,7 +449,7 @@ ml-kmeans@^6.0.0:
     ml-nearest-vector "^2.0.1"
     ml-random "^0.5.0"
 
-ml-matrix@^6.9.0:
+ml-matrix@^6.10.5, ml-matrix@^6.9.0:
   version "6.10.5"
   resolved "https://registry.yarnpkg.com/ml-matrix/-/ml-matrix-6.10.5.tgz#96210951b44c930e75181822f0a3f8e166b54ecc"
   integrity sha512-3RNGo8Ls3JR/f+8t0pNrvoDW6SmLNDBpQN6FzkFvNx7FJ3GL7Ic1kdxlDYavU3pRwxJFgBrRwZ0FwE+JjX+tvQ==
@@ -473,6 +468,13 @@ ml-random@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/ml-random/-/ml-random-0.5.0.tgz#d6f7c0e8fbcebee05a14ece9a411769508c5eb3b"
   integrity sha512-zLJBmNb34LOz+vN6BD8l3aYm/VWYWbmAunrLMPs4dHf4gTl8BWlhil72j56HubPg86zrXioIs4qoHq7Topy6tw==
+  dependencies:
+    ml-xsadd "^2.0.0"
+
+ml-random@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ml-random/-/ml-random-1.0.1.tgz#e5ac7729ff240930fa51dc4c03a6b5d34655327a"
+  integrity sha512-lZJjjPLc6qLnYt9BLuHGReGnSYHriN6T7qzjQiE2FepjZ/TXCW1bQBR3t2QYRj+cxsLtRlVzeGnHuRYYMfiUmA==
   dependencies:
     ml-xsadd "^2.0.0"
 
