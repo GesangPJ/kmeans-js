@@ -76,7 +76,7 @@ const normalizeAndSaveData = async () => {
 }
 
 // Kirim Parameter Elbow Method
-app.post('/api/post-elbow', async (req, res) => {
+app.post('/api/post-parameter', async (req, res) => {
   try {
     // Get the parameters from the request body
     const { JumlahCluster, perulangan } = req.body;
