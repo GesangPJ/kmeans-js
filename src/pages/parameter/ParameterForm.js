@@ -66,10 +66,11 @@ const InputParameterForm = () => {
     const ElbowInput = {
       JumlahCluster,
       perulangan,
-    }
+      centroidType, // Include the selected centroid type
+    };
 
     try {
-      const response = await fetch('http://localhost:3001/api/post-elbow', {
+      const response = await fetch('http://localhost:3001/api/post-parameter', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,6 +82,7 @@ const InputParameterForm = () => {
         setSuccessMessage(`Parameter Berhasil Dikirim`);
         setJumlahCluster('');
         setperulangan('');
+        setCentroid(''); // Reset the centroid type selection
         setTimeout(() => {
           setSuccessMessage('');
         }, 5000);
@@ -90,7 +92,7 @@ const InputParameterForm = () => {
     } catch (error) {
       console.error('Error:', error);
     }
-  };
+  }
   const [centroidType, setCentroid] = React.useState('');
 
   const handleChange = (event) => {
