@@ -27,17 +27,12 @@ const navigation = () => {
       path: '/normalisasi'
     },
     {
-      title: 'Metode Elbow',
-      icon: StackedBarChartOutlinedIcon,
-      path: '/elbow-method'
+      title: 'Parameter',
+      icon: TuneOutlined,
+      path: '/parameter'
     },
     {
       sectionTitle: 'K-Means'
-    },
-    {
-      title: 'Tipe Centroid',
-      icon: TuneOutlined,
-      path: '/obat-herbal'
     },
     {
       title: 'Kalkulasi K-Means',
