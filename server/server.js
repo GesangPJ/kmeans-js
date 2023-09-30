@@ -43,7 +43,7 @@ const normalizeData = (data) => {
   return { normalizedData, minMax };
 }
 
-
+// Api Normalisasi Dan Simpan Data
 const normalizeAndSaveData = async () => {
   try {
     // Make an HTTP GET request to fetch sensor data from the API route
@@ -103,6 +103,75 @@ const normalizeAndSaveData = async () => {
   }
 }
 
+// Kirim Parameter Elbow Method
+app.post('/api/post-elbow', async (req, res) => {
+  try {
+    // Get the parameters from the request body
+    const { JumlahCluster, perulangan } = req.body;
+
+    // Perform the elbow method calculation here
+    const normalizedData = await fetchNormalizedData();
+    const maxCluster = parseInt(JumlahCluster);
+    const maxLoop = parseInt(perulangan);
+    const centroid = null; // You can provide centroid data if needed
+
+    // Call the elbowOptimize function with the normalized data
+    const elbowResults = elbowOptimize(normalizedData, maxCluster, maxLoop, centroid);
+
+    // Save the results to the MongoDB collection 'elbow_result'
+    const { database } = await connectToMongoDB();
+    const elbowResultCollection = database.collection('elbow_result');
+
+    const elbowResultData = {
+      JumlahCluster: maxCluster,
+      Perulangan: maxLoop,
+      Result: elbowResults,
+      Timestamp: new Date(),
+    };
+
+    await elbowResultCollection.updateOne(
+      {},
+      { $set: elbowResultData },
+      { upsert: true }
+    );
+
+    res.json({ message: 'Elbow method completed and results saved.' });
+  } catch (error) {
+    console.error('Error in Elbow Method:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+// Simpan Hasil Elbow Method
+app.post('/api/save-elbow-result', async (req, res) => {
+  try {
+    const { JumlahCluster, Perulangan, Result, Timestamp } = req.body;
+
+    // Save the elbow method result to MongoDB
+    const { database } = await connectToMongoDB();
+    const elbowResultCollection = database.collection('elbow_result');
+
+    const elbowResultData = {
+      JumlahCluster,
+      Perulangan,
+      Result,
+      Timestamp,
+    };
+
+    await elbowResultCollection.updateOne(
+      {},
+      { $set: elbowResultData },
+      { upsert: true }
+    );
+
+    res.json({ message: 'Elbow result saved successfully' });
+  } catch (error) {
+    console.error('Error saving elbow result:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+})
+
 // Mulai normalisasi berdasarkan permintaan frontend
 app.post('/api/start-normalization', async (req, res) => {
   try {
@@ -112,7 +181,7 @@ app.post('/api/start-normalization', async (req, res) => {
     console.error('Error starting data normalization:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
+})
 
 
 // Cek Status koneksi mongoDB
@@ -127,12 +196,12 @@ app.get('/api/mongoDB-status', async (req, res) => {
     console.error('Error checking mongoDB status:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
+})
 
 // Kirim status server
 app.get('/api/server-status', (req, res) => {
   res.json({ status: 'Online' });
-});
+})
 
 // Set Port buat server
 const port = process.env.PORT || 3001;
@@ -141,7 +210,7 @@ app.listen(port, async () => {
 
   // Mulai Koneksi ke mongoDB saat server start
   await connectToMongoDB();
-});
+})
 
 // Ambil Data Dari Koleksi sensor_data
 app.get('/api/get-sensordata', async (req, res) => {
@@ -261,6 +330,6 @@ app.post('/api/upload-csv', upload.single('csvFile'), async (req, res) => {
     console.error('Error uploading CSV:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
+})
 
 
