@@ -1,7 +1,7 @@
 // kmeansprocess.js
 // Processing K-Means using the 'ml-kmeans' package
 
-const KMeans = require('ml-kmeans'); // Use the correct import statement
+const KMeans = require('global/ml-kmeans')
 const math = require('mathjs');
 const { connectToMongoDB } = require('./mongoDB');
 
@@ -39,7 +39,9 @@ const generateRandomCentroid = (data, k) => {
 };
 
 const calculateKMeans = async (data, k, maxLoop, centroid) => {
-  const result = KMeans(data, k, { maxIterations: maxLoop, tolerance: 1e-4, runs: 1, initialCentroids: centroid }); // Corrected usage
+  const KMeans = require('ml-kmeans')
+
+  const result = KMeans(data, k, { maxIterations: maxLoop, tolerance: 1e-4, runs: 1, initialCentroids: centroid })
 
   // Connect to the MongoDB database
   const { database } = await connectToMongoDB();
