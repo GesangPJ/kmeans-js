@@ -29,7 +29,7 @@ const navigation = () => {
     {
       title: 'Metode Elbow',
       icon: StackedBarChartOutlinedIcon,
-      path: '/obat-herbal'
+      path: '/elbow-method'
     },
     {
       sectionTitle: 'K-Means'
