@@ -19,19 +19,37 @@ const InputElbowForm = () => {
   // Validation function
   const isInputValid = () => {
     if (!JumlahCluster || !perulangan) {
-      setErrorMessage('Jumlah Cluster and Perulangan cannot be empty.');
+      setErrorMessage('Jumlah Cluster and Perulangan tidak boleh kosong.')
 
-      return false;
+      setTimeout(() => {
+        setErrorMessage('')
+      }, 5000)
+
+      return false
     }
     if (parseInt(perulangan) > 10) {
-      setErrorMessage('Perulangan (Loop) Elbow cannot be greater than 10.');
+      setErrorMessage('Perulangan (Loop) Elbow maksimum 10.')
 
-      return false;
+      setTimeout(() => {
+        setErrorMessage('')
+      }, 5000)
+
+      return false
     }
-    setErrorMessage('');
+    if (parseInt(JumlahCluster) > 10) {
+      setErrorMessage('Jumlah Cluster maksimum 10.')
 
-    return true;
-  };
+      setTimeout(() => {
+        setErrorMessage('')
+      }, 5000)
+
+      return false
+    }
+
+    setErrorMessage('')
+
+    return true
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,7 +61,7 @@ const InputElbowForm = () => {
     const ElbowInput = {
       JumlahCluster,
       perulangan,
-    };
+    }
 
     try {
       const response = await fetch('http://localhost:3001/api/post-elbow', {
@@ -74,7 +92,7 @@ const InputElbowForm = () => {
       <CardHeader title='Metode Elbow' titleTypographyProps={{ variant: 'h6' }} />
       <CardContent>
         {successMessage && <Alert severity="success">{successMessage}</Alert>}
-        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+        {errorMessage && <Alert severity="error">{errorMessage}</Alert>}<br></br>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={5}>
             <Grid item xs={12}>
@@ -84,7 +102,7 @@ const InputElbowForm = () => {
                 label='Jumlah Cluster'
                 name='JumlahCluster'
                 placeholder='Jumlah Cluster'
-                helperText='Masukkan Jumlah Cluster'
+                helperText='Masukkan Jumlah Cluster (10 Max)'
                 value={JumlahCluster}
                 onChange={handleJumlahClusterChange}
               />
