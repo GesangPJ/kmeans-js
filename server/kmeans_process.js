@@ -18,7 +18,7 @@ class KMeans {
   execute() {
     // Implement the K-Means clustering logic here
     for (let i = 0; ; i++) {
-      this.cluster[i] = [];
+      this.cluster[i] = this.cluster[i] || []; // Initialize this.cluster[i] as an empty array
 
       if (i === 0) {
         this.data_cluster[i] = this.centroid;

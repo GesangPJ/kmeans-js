@@ -4,6 +4,8 @@ const cors = require('cors')
 const multer = require('multer')
 const fetch = require('node-fetch')
 const { fetchNormalizedData, elbowOptimize } = require('./elbow_process')
+const KMeans = require('./kmeans_process');
+
 
 const app = express()
 const storage = multer.memoryStorage()

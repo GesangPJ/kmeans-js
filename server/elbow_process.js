@@ -38,7 +38,7 @@ async function performElbowMethod(JumlahCluster, perulangan) {
     // Perform elbow method calculations using 'normalizedData'
 
 
-    const optimalClusterCount = 3; // Replace with your elbow method result
+    const optimalClusterCount = calculateOptimalClusterCount(results); // Replace with your actual logic
 
     // Save the elbow method result to MongoDB
     const { database } = await connectToMongoDB()
