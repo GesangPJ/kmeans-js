@@ -3,6 +3,7 @@ const { connectToMongoDB } = require('./mongoDB')
 const cors = require('cors')
 const multer = require('multer')
 const fetch = require('node-fetch')
+const { fetchNormalizedData, elbowOptimize } = require('./elbow_process')
 
 const app = express()
 const storage = multer.memoryStorage()
@@ -140,7 +141,7 @@ app.post('/api/post-elbow', async (req, res) => {
     console.error('Error in Elbow Method:', error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
-});
+})
 
 
 // Simpan Hasil Elbow Method
