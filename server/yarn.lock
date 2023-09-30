@@ -342,6 +342,11 @@ javascript-natural-sort@^0.7.1:
   resolved "https://registry.yarnpkg.com/javascript-natural-sort/-/javascript-natural-sort-0.7.1.tgz#f9e2303d4507f6d74355a73664d1440fb5a0ef59"
   integrity sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==
 
+kmeans-js@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/kmeans-js/-/kmeans-js-0.1.2.tgz#5213df53d1fdfd6f9a3acced7081b15fe0d90498"
+  integrity sha512-7JOVsDTWsHpcUlzB3Y1Dvhrwd1F3eKu5ABeCkbkQ0Bav3wkSBq4grlQPz2gSzHsLiDO1MOEm6x3sHjXjoY+EeA==
+
 luxon@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/luxon/-/luxon-3.4.3.tgz#8ddf0358a9492267ffec6a13675fbaab5551315d"
